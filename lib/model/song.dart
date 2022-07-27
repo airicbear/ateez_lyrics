@@ -26,17 +26,17 @@ class Song {
         );
 
   static bool lineCountMatch(Map<String, List<String>> lyrics) {
-    bool result = true;
+    List<MapEntry> entries = lyrics.entries.toList();
 
-    lyrics.forEach((key, value) {
-      lyrics.forEach((key1, value1) {
-        if (lyrics[key]?.length != lyrics[key1]?.length) {
-          result = false;
+    for (int i = 1; i < entries.length; i++) {
+      for (int j = 0; j < i; j++) {
+        if (entries[i].value?.length != entries[j].value?.length) {
+          return false;
         }
-      });
-    });
+      }
+    }
 
-    return result;
+    return true;
   }
 
   factory Song.fromJson(Map<String, dynamic> json) {
