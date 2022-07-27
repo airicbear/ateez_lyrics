@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
       body: CustomScrollView(
         slivers: [
           _HomeAppBar(),
-          _HomeLyricsList(),
+          _HomeAlbumList(),
         ],
       ),
     );
@@ -45,12 +45,12 @@ class _HomeAppBar extends StatelessWidget {
   }
 }
 
-class _HomeLyricsList extends StatelessWidget {
+class _HomeAlbumList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => _HomeLyricsListItem(
+        (context, index) => _HomeAlbumListItem(
           index: index,
         ),
         childCount: albums.length,
@@ -59,10 +59,10 @@ class _HomeLyricsList extends StatelessWidget {
   }
 }
 
-class _HomeLyricsListItem extends StatelessWidget {
+class _HomeAlbumListItem extends StatelessWidget {
   final int index;
 
-  const _HomeLyricsListItem({
+  const _HomeAlbumListItem({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -92,10 +92,10 @@ class _HomeLyricsListItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _HomeLyricsListItemImage(
+            _HomeAlbumListItemImage(
               index: index,
             ),
-            _HomeLyricsListItemTitle(
+            _HomeAlbumListItemTitle(
               index: index,
             ),
           ],
@@ -105,10 +105,10 @@ class _HomeLyricsListItem extends StatelessWidget {
   }
 }
 
-class _HomeLyricsListItemImage extends StatelessWidget {
+class _HomeAlbumListItemImage extends StatelessWidget {
   final int index;
 
-  const _HomeLyricsListItemImage({
+  const _HomeAlbumListItemImage({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -123,10 +123,10 @@ class _HomeLyricsListItemImage extends StatelessWidget {
   }
 }
 
-class _HomeLyricsListItemTitle extends StatelessWidget {
+class _HomeAlbumListItemTitle extends StatelessWidget {
   final int index;
 
-  const _HomeLyricsListItemTitle({Key? key, required this.index})
+  const _HomeAlbumListItemTitle({Key? key, required this.index})
       : super(key: key);
 
   @override
