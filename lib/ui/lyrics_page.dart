@@ -25,8 +25,11 @@ class _LyricsPageState extends State<LyricsPage>
   @override
   void initState() {
     super.initState();
-    tabController =
-        TabController(length: widget.song.lyrics.length, vsync: this);
+
+    tabController = TabController(
+      length: widget.song.lyrics.length,
+      vsync: this,
+    );
     tabController.addListener(() {
       setState(() {
         lyrics = widget.song.lyrics.values.toList()[tabController.index];
@@ -38,63 +41,132 @@ class _LyricsPageState extends State<LyricsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: TabBar(
-        controller: tabController,
-        tabs: List<Tab>.generate(
-          widget.song.lyrics.length,
-          (index) => Tab(
-            text: widget.song.lyrics.keys.toList()[index].toUpperCase(),
-          ),
-        ),
-        labelStyle: const TextStyle(
-          fontFamily: 'Raleway',
-          fontSize: 24.0,
-          fontWeight: FontWeight.bold,
-        ),
+      bottomNavigationBar: _LyricsPageTabBar(
+        tabController: tabController,
+        song: widget.song,
       ),
       body: CustomScrollView(
         slivers: [
-          MainAppBar(
-            title: Text(
-              widget.song.title,
-              style: const TextStyle(
-                fontFamily: 'Raleway',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            background: Image.asset(
-              widget.imagePath,
-              fit: BoxFit.cover,
-            ),
-            expandedHeight: 256,
+          _LyricsPageAppBar(
+            imagePath: widget.imagePath,
+            song: widget.song,
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final String line = lyrics[index];
-                return ListTile(
-                  title: line.startsWith('[')
-                      ? HtmlWidget(
-                          line.substring(1, line.length - 1),
-                          textStyle: TextStyle(
-                            fontFamily: 'Raleway',
-                            fontSize: 16.0,
-                            color: Theme.of(context).disabledColor,
-                          ),
-                        )
-                      : HtmlWidget(
-                          line,
-                          textStyle: const TextStyle(
-                            fontFamily: 'Raleway',
-                          ),
-                        ),
-                );
-              },
-              childCount: lyrics.length,
-            ),
+          _LyricsPageLyricList(
+            lyrics: lyrics,
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LyricsPageTabBar extends StatelessWidget {
+  final TabController tabController;
+  final Song song;
+
+  const _LyricsPageTabBar({
+    Key? key,
+    required this.tabController,
+    required this.song,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBar(
+      controller: tabController,
+      tabs: List<Tab>.generate(
+        song.lyrics.length,
+        (index) => Tab(
+          text: song.lyrics.keys.toList()[index].toUpperCase(),
+        ),
+      ),
+      labelStyle: const TextStyle(
+        fontFamily: 'Raleway',
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
+
+class _LyricsPageAppBar extends StatelessWidget {
+  final Song song;
+  final String imagePath;
+
+  const _LyricsPageAppBar(
+      {Key? key, required this.song, required this.imagePath})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MainAppBar(
+      title: Text(
+        song.title,
+        style: const TextStyle(
+          fontFamily: 'Raleway',
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      background: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      ),
+      expandedHeight: 256,
+    );
+  }
+}
+
+class _LyricsPageLyricList extends StatelessWidget {
+  final List<dynamic> lyrics;
+
+  const _LyricsPageLyricList({
+    Key? key,
+    required this.lyrics,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          final String line = lyrics[index];
+
+          return _LyricsPageLyricListItem(
+            line: line,
+          );
+        },
+        childCount: lyrics.length,
+      ),
+    );
+  }
+}
+
+class _LyricsPageLyricListItem extends StatelessWidget {
+  final String line;
+
+  const _LyricsPageLyricListItem({
+    Key? key,
+    required this.line,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: line.startsWith('[')
+          ? HtmlWidget(
+              line.substring(1, line.length - 1),
+              textStyle: TextStyle(
+                fontFamily: 'Raleway',
+                fontSize: 16.0,
+                color: Theme.of(context).disabledColor,
+              ),
+            )
+          : HtmlWidget(
+              line,
+              textStyle: const TextStyle(
+                fontFamily: 'Raleway',
+              ),
+            ),
     );
   }
 }
