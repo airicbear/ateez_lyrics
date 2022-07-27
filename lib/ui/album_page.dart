@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:ateez_lyrics/ui/main_app_bar.dart';
-import 'package:ateez_lyrics/ui/page_transition.dart';
+import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
+import 'package:ateez_lyrics/ui/common/page_transition.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {
