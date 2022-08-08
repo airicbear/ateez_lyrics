@@ -2,6 +2,21 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'THE WORLD EP.1 : MOVEMENT',
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/the_world_ep_1_movement.jpg',
+    lyricsFolderPath: 'assets/lyrics/the_world_ep_1_movement',
+    lyricsPaths: [
+      'propaganda.json',
+      'sector_1.json',
+      'cyberpunk.json',
+      'guerrilla.json',
+      'the_ring.json',
+      'wdig.json',
+      'new_world.json',
+    ],
+  ),
+  Album(
     title: 'ZERO : FEVER EPILOGUE',
     releaseDate: DateTime(2021),
     imagePath: 'assets/images/cover_art/fever_epilogue.jpg',
