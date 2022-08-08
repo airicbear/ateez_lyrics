@@ -45,12 +45,19 @@ class _AlbumPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainAppBar(
-      title: Text(
-        album.title,
-        style: const TextStyle(
-          fontFamily: 'Raleway',
-          fontWeight: FontWeight.bold,
-          fontStyle: FontStyle.italic,
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            album.title,
+            style: const TextStyle(
+              fontFamily: 'Raleway',
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              fontSize: 24,
+            ),
+          ),
         ),
       ),
       background: Image.asset(
