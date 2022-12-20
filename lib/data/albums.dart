@@ -2,6 +2,20 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'THE WORLD EP.PARADIGM',
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/the_world_ep_paradigm.jpg',
+    lyricsFolderPath: 'assets/lyrics/the_world_ep_paradigm',
+    lyricsPaths: [
+      'intro_siren.json',
+      'paradigm.json',
+      'cyberpunk_japanese_ver.json',
+      'guerilla_flag_ver.json',
+      'new_world_japanese_ver.json',
+      'outro_liberty.json',
+    ],
+  ),
+  Album(
     title: 'THE WORLD EP.1 : MOVEMENT',
     releaseDate: DateTime(2022),
     imagePath: 'assets/images/cover_art/the_world_ep_1_movement.jpg',
