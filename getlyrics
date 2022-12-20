@@ -1,13 +1,13 @@
-#!/Users/ericnguyen/opt/anaconda3/bin/python
+#!/usr/bin/python3
 #
 # Print song lyrics from https://genius.com/
 #
 # Usage (Linux):
 #   alias xclip="xclip -selection c"
-#   ./lyrics [url] | xclip
+#   ./getlyrics [url] | xclip
 #
 # Usage (MacOS):
-#   ./lyrics [url] | pbcopy
+#   ./getlyrics [url] | pbcopy
 #
 
 from bs4 import BeautifulSoup
