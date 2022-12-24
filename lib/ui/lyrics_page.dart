@@ -100,11 +100,16 @@ class _LyricsPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainAppBar(
-      title: Text(
-        song.title,
-        style: const TextStyle(
-          fontFamily: 'Raleway',
-          fontWeight: FontWeight.bold,
+      title: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8.0,
+        ),
+        child: Text(
+          song.title,
+          style: const TextStyle(
+            fontFamily: 'Raleway',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       background: Image.asset(
