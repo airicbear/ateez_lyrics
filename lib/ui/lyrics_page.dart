@@ -41,10 +41,12 @@ class _LyricsPageState extends State<LyricsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _LyricsPageTabBar(
-        tabController: tabController,
-        song: widget.song,
-      ),
+      bottomNavigationBar: widget.song.lyrics.length > 1
+          ? _LyricsPageTabBar(
+              tabController: tabController,
+              song: widget.song,
+            )
+          : const SizedBox.shrink(),
       body: CustomScrollView(
         slivers: [
           _LyricsPageAppBar(
