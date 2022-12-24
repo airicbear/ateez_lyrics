@@ -32,9 +32,10 @@ class _HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainAppBar(
-      title: const ImageIcon(
-        AssetImage(ateezLogo),
-        size: 192,
+      title: Image.asset(
+        ateezLogo,
+        color: Colors.white,
+        width: 192,
       ),
       background: Image.asset(
         ateezGroupPic,
