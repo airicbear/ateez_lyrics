@@ -50,17 +50,17 @@ class Song {
   static String _sectionIndices(Map<String, List<String>> lyrics) {
     return lyrics
         .map((k, v) {
-          List<int> _indices = [];
+          List<int> indices = [];
           int i = 0;
           while (i < v.length) {
             if (v.elementAt(i).isEmpty ||
                 (v.elementAt(i).startsWith('[') &&
                     v.elementAt(i).endsWith(']'))) {
-              _indices.add(i);
+              indices.add(i);
             }
             i++;
           }
-          return MapEntry(k, '$_indices');
+          return MapEntry(k, '$indices');
         })
         .entries
         .map((e) => '${e.key}: ${e.value}')
