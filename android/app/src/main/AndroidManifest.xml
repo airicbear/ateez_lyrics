@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ateez_lyrics">
+    package="com.etndevel.ateez_lyrics">
    <application
         android:label="ATEEZ Lyrics"
         android:icon="@mipmap/launcher_icon">
