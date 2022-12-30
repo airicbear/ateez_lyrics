@@ -12,6 +12,8 @@ import 'package:ateez_lyrics/ui/lyrics_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'common/keep_alive_future_builder.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -256,7 +258,7 @@ class _SearchQueryResultListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) => FutureBuilder(
+      builder: (context, searchQuery, child) => KeepAliveFutureBuilder(
         future: DefaultAssetBundle.of(context)
             .loadString('${entry.value.lyricsFolderPath}/${entry.key}'),
         builder: (context, snapshot) {
