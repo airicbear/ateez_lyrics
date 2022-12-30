@@ -290,7 +290,7 @@ class _SearchQueryResultListItem extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      flex: 8,
+                      flex: 3,
                       child: Container(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
