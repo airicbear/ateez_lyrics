@@ -10,7 +10,7 @@ final List<Album> albums = [
       'intro_siren.json',
       'paradigm.json',
       'cyberpunk_japanese_ver.json',
-      'guerilla_flag_ver.json',
+      'guerrilla_flag_ver.json',
       'new_world_japanese_ver.json',
       'outro_liberty.json',
     ],
