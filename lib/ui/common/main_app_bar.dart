@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 class MainAppBar extends StatelessWidget {
   final Widget title;
   final Widget background;
+  final PreferredSizeWidget bottom;
   final double expandedHeight;
+  final bool centerTitle;
 
   const MainAppBar({
     Key? key,
     required this.title,
-    required this.background,
+    this.background = const SizedBox.shrink(),
+    this.bottom = const PreferredSize(
+      preferredSize: Size(0, 0),
+      child: SizedBox.shrink(),
+    ),
     required this.expandedHeight,
+    this.centerTitle = true,
   }) : super(key: key);
 
   @override
@@ -17,6 +24,7 @@ class MainAppBar extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       expandedHeight: expandedHeight,
+      bottom: bottom,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: title,
