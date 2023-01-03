@@ -149,6 +149,7 @@ final List<Album> albums = [
       'desire.json',
       'light.json',
       'promise.json',
+      'from.json',
     ],
   ),
   Album(
