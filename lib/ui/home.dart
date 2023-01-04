@@ -34,6 +34,8 @@ class _HomeAppBar extends StatelessWidget {
   static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
   static const String ateezGroupPic = 'assets/images/misc/ateez_group.jpg';
 
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MainAppBar(
@@ -60,6 +62,7 @@ class _HomeAppBar extends StatelessWidget {
               child: SizedBox(
                 width: 100,
                 child: TextField(
+                  controller: controller,
                   onChanged: (value) => searchQuery.setQuery(value),
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
