@@ -91,6 +91,18 @@ final List<Album> albums = [
     ],
   ),
   Album(
+    title: 'Dreamers',
+    releaseDate: DateTime(2021),
+    imagePath: 'assets/images/cover_art/dreamers.jpg',
+    lyricsFolderPath: 'assets/lyrics/dreamers',
+    lyricsPaths: [
+      'dreamers.json',
+      'blue_summer.json',
+      'still_here_acoustic_ver.json',
+      'dreamers_instrumental.json',
+    ],
+  ),
+  Album(
     title: 'ZERO : FEVER, Part.2',
     releaseDate: DateTime(2021),
     imagePath: 'assets/images/cover_art/fever_pt_2.jpg',
