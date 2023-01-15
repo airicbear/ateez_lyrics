@@ -151,6 +151,20 @@ final List<Album> albums = [
     ],
   ),
   Album(
+    title: 'Treasure EP. Map to Answer',
+    releaseDate: DateTime(2021),
+    imagePath: 'assets/images/cover_art/treasure_ep_map_to_answer.jpg',
+    lyricsFolderPath: 'assets/lyrics/treasure_ep_map_to_answer',
+    lyricsPaths: [
+      'declaration.json',
+      'answer_japanese_ver.json',
+      'better.json',
+      'wonderland_sean_ohs_skrt_mix.json',
+      'sunrise_atmospheric_mix_by_spacecowboy.json',
+      'star_1117_buddys_melodic_mix.json',
+    ],
+  ),
+  Album(
     title: 'TREASURE EPILOGUE : Action To Answer',
     releaseDate: DateTime(2020),
     imagePath: 'assets/images/cover_art/treasure_epilogue.jpg',
