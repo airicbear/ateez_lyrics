@@ -44,6 +44,21 @@ final List<Album> albums = [
     ],
   ),
   Album(
+    title: 'BEYOND : ZERO',
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/beyond_zero.jpg',
+    lyricsFolderPath: 'assets/lyrics/beyond_zero',
+    lyricsPaths: [
+      'intro_beyond_zero.json',
+      'deja_vu_japanese_ver.json',
+      'rocky_boxers_ver.json',
+      'the_king.json',
+      'yakanhikou_turbulence_japanese_ver.json',
+      'take_me_home_japanese_ver.json',
+      'fireworks_im_the_one_japanese_ver.json',
+    ],
+  ),
+  Album(
     title: 'ZERO : FEVER EPILOGUE',
     releaseDate: DateTime(2021),
     imagePath: 'assets/images/cover_art/fever_epilogue.jpg',
