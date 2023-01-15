@@ -2,6 +2,19 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'SPIN OFF : FROM THE WITNESS',
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/spin_off_from_the_witness.jpg',
+    lyricsFolderPath: 'assets/lyrics/spin_off_from_the_witness',
+    lyricsPaths: [
+      'halazia.json',
+      'win_june_one_remix.json',
+      'im_the_one_edenary_remix.json',
+      'take_me_home_idiotape_remix.json',
+      'outro_blue_bird.json',
+    ],
+  ),
+  Album(
     title: 'THE WORLD EP.PARADIGM',
     releaseDate: DateTime(2022),
     imagePath: 'assets/images/cover_art/the_world_ep_paradigm.jpg',
