@@ -7,11 +7,23 @@ Read ATEEZ lyrics in Hangul, Romanized, or English.
 [<img src="./assets/images/screenshots/home.jpg" alt="Home page screenshot" width="200" >](./assets/images/screenshots/home.jpg)
 [<img src="./assets/images/screenshots/lyrics.jpg" alt="Lyrics page screenshot" width="200" >](./assets/images/screenshots/lyrics.jpg)
 
+### Development Environment
+
+- Flutter 3.7.12
+
+- Android Studio version 2022.2
+
+- JDK 17
+
+- Gradle version 7.6.1
+
+- Android Studio Gradle plugin version 7.4.0
+
 ### Acknowledgments
 
 - App created using [Flutter](https://flutter.dev/).
 
-- Lyrics obtained from [genius.com](https://genius.com/artists/Ateez), [YouTube search results](https://www.youtube.com/results?search_query=ateez+lyrics), and [Google Translate](https://translate.google.com/).
+- Lyrics obtained from [Genius](https://genius.com/artists/Ateez), [YouTube search results](https://www.youtube.com/results?search_query=ateez+lyrics), and [Google Translate](https://translate.google.com/).
 
 - Album cover art obtained from [YouTube Music](https://music.youtube.com/channel/UCmWwbZ-8SngcUzRAD8rCVvw).
 
