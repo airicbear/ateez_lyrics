@@ -1,16 +1,22 @@
-# ateez_lyrics
+# ATEEZ Lyrics <img src="./assets/images/icon/icon.png" width="64" alt="ATEEZ Lyrics App Icon">
 
-A new Flutter project.
+Read ATEEZ lyrics in Hangul, Romanized, or English.
 
-## Getting Started
+### Screenshots
 
-This project is a starting point for a Flutter application.
+[<img src="./assets/images/screenshots/home.jpg" alt="Home page screenshot" width="200" >](./assets/images/screenshots/home.jpg)
+[<img src="./assets/images/screenshots/lyrics.jpg" alt="Lyrics page screenshot" width="200" >](./assets/images/screenshots/lyrics.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+### Acknowledgments
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- App created using [Flutter](https://flutter.dev/).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Lyrics obtained from [genius.com](https://genius.com/artists/Ateez), [YouTube search results](https://www.youtube.com/results?search_query=ateez+lyrics), and [Google Translate](https://translate.google.com/).
+
+- Album cover art obtained from [YouTube Music](https://music.youtube.com/channel/UCmWwbZ-8SngcUzRAD8rCVvw).
+
+- Home page images obtained from Google image search results: ["ateez halazia"](https://www.google.com/search?sxsrf=APwXEdegswrToRCbrhTy_GqqPEXI_x-VnQ:1683206477681&q=ateez+halazia&tbm=isch&sa=X&ved=2ahUKEwja6b3h4Nv-AhXaFFkFHVJMAAIQ0pQJegQIExAB&biw=1440&bih=764&dpr=2), ["ateez deja vu"](https://www.google.com/search?q=ateez+deja+vu&tbm=isch&ved=2ahUKEwjG98iL4dv-AhXSGVkFHVHXCe8Q2-cCegQIABAA&oq=ateez+deja+vu&gs_lcp=CgNpbWcQAzIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDIHCAAQGBCABDoECCMQJzoFCAAQgARQzgRY8gpgyQxoAHAAeACAAbEBiAGpBZIBAzcuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=pbFTZIaROdKz5NoP0a6n-A4&bih=764&biw=1440).
+
+- Launcher icon created using [Inkscape](https://inkscape.org/).
+
+- Images optimized using [ImageOptim](https://imageoptim.com/mac).

@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       home: const Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
