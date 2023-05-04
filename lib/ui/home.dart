@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
 
 class _HomeAppBar extends StatelessWidget {
   static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
-  static const String ateezGroupPic = 'assets/images/misc/ateez_group.jpg';
+  static const String ateezGroupPic = 'assets/images/misc/ateez_group_1.jpg';
 
   final TextEditingController controller = TextEditingController();
 
@@ -304,7 +304,7 @@ class _SearchQueryResultListItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: song.lyrics.isEmpty
                                 ? Theme.of(context).disabledColor
-                                : Theme.of(context).textTheme.bodyText1?.color,
+                                : Theme.of(context).textTheme.bodyLarge?.color,
                           ),
                         ),
                       ),
