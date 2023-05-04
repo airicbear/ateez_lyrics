@@ -28,6 +28,7 @@ flutter:
   assets:
     - assets/images/misc/
     - assets/images/cover_art/
+    - assets/lyrics/limitless/
     - assets/lyrics/spin_off_from_the_witness/
     - assets/lyrics/the_world_ep_paradigm/
     - assets/lyrics/the_world_ep_1_movement/
