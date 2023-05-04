@@ -180,7 +180,7 @@ class _AlbumPageListItemTitle extends StatelessWidget {
           fontWeight: FontWeight.bold,
           color: song.lyrics.isEmpty
               ? Theme.of(context).disabledColor
-              : Theme.of(context).textTheme.bodyText1?.color,
+              : Theme.of(context).textTheme.bodyLarge?.color,
         ),
       ),
     );
