@@ -2,8 +2,8 @@
 const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
-const RESOURCES = {
-  "version.json": "bf7bc650a9b1a4ae8510763f1acdd75c",
+
+const RESOURCES = {"version.json": "bf7bc650a9b1a4ae8510763f1acdd75c",
 "splash/img/light-2x.png": "a6ee36c20f580ac89b8edd1bcf384fa0",
 "splash/img/dark-4x.png": "61e19038840acc28e8260a5b00b12c29",
 "splash/img/light-3x.png": "1a1dc921d7a875285650153e87035304",
@@ -14,10 +14,10 @@ const RESOURCES = {
 "splash/img/light-1x.png": "ad009cce9088dd1ecdf848fabbdbe9ab",
 "splash/splash.js": "123c400b58bea74c1305ca3ac966748d",
 "splash/style.css": "1404a5cdf67c618f89467983c828bd26",
-"index.html": "2db09e21c7ef61ed2f4224f0ebc56b53",
-"/": "2db09e21c7ef61ed2f4224f0ebc56b53",
-"main.dart.js": "06a2a8f2c2dee09b20615c23b44e7b42",
-"flutter.js": "a85fcf6324d3c4d3ae3be1ae4931e9c5",
+"index.html": "ce8c6d14a1f9d6d98fe7bbfcbdb460df",
+"/": "ce8c6d14a1f9d6d98fe7bbfcbdb460df",
+"main.dart.js": "15f1ab9be931d1f90d185a419eec1287",
+"flutter.js": "6fef97aeca90b426343ba6c5c9dc5d4a",
 "favicon.png": "140abc41beb3583a2a380f438025c0e8",
 "icons/Icon-192.png": "8849887a8eae50e5e7879fc11d12447b",
 "icons/Icon-maskable-192.png": "8849887a8eae50e5e7879fc11d12447b",
@@ -25,10 +25,12 @@ const RESOURCES = {
 "icons/Icon-512.png": "1681b0b3a2a1d4ad2a35e888a70ad12a",
 "manifest.json": "550df1aad23099dcd40161fc06781ceb",
 "assets/AssetManifest.json": "9d0101fe24864d74b04bb62a96459391",
-"assets/NOTICES": "2461ac6f89b3b169e14b69904018be52",
+"assets/NOTICES": "487bc8577a8d4a501552f85b05835322",
 "assets/FontManifest.json": "bf334e800811fcb15866cc2b021eefc8",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "57d849d738900cfd590e9adc7e208250",
+"assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
+"assets/AssetManifest.bin": "71f7db7c6c9b67377202458700f8ebb7",
+"assets/fonts/MaterialIcons-Regular.otf": "62ec8220af1fb03e1c20cfa38781e17e",
 "assets/assets/lyrics/treasure_ep_map_to_answer/better.json": "9c49416fe9cc8ba46f7a51dc35419708",
 "assets/assets/lyrics/treasure_ep_map_to_answer/declaration.json": "50416166e3b953df42846175961e11d0",
 "assets/assets/lyrics/treasure_ep_map_to_answer/sunrise_atmospheric_mix_by_spacecowboy.json": "676fc91df5f4f4a03a39c61ed479724d",
@@ -61,13 +63,13 @@ const RESOURCES = {
 "assets/assets/lyrics/treasure_ep_fin/wonderland.json": "2568f63e3579d2c0c718813615daf101",
 "assets/assets/lyrics/treasure_ep_fin/dazzling_light.json": "71a8439ab15f53e1408a0b573d27a3fa",
 "assets/assets/lyrics/treasure_ep_fin/beginning_of_the_end.json": "b6204b21da36c751ee1fcba63f416cf2",
-"assets/assets/lyrics/fever_pt_1/to_the_beat.json": "373fbef81be90f16b1d000c588017d12",
-"assets/assets/lyrics/fever_pt_1/one_day_at_a_time.json": "8adf4078dcb6914017e5c21f0c26f5c6",
+"assets/assets/lyrics/fever_pt_1/to_the_beat.json": "48e7042712eb7da66809dec50ba240d0",
+"assets/assets/lyrics/fever_pt_1/one_day_at_a_time.json": "ede2af897717d83d2b98d9b6748f9287",
 "assets/assets/lyrics/fever_pt_1/fever.json": "c4a2ed4d6a63bb7f6fbcb93427300808",
-"assets/assets/lyrics/fever_pt_1/inception.json": "040aba725f4fce5c1a5875f0c5d3820a",
+"assets/assets/lyrics/fever_pt_1/inception.json": "5c1246e6f39a044b291c98510a35ab97",
 "assets/assets/lyrics/fever_pt_1/dear_diary.json": "0268304613365c0681eb7d5e54f3157c",
-"assets/assets/lyrics/fever_pt_1/good_lil_boy.json": "f003ea8916915e88ba8b1614f88fe01d",
-"assets/assets/lyrics/fever_pt_1/thanxx.json": "cd89a1da1c0995b1c13e4c46bb86b863",
+"assets/assets/lyrics/fever_pt_1/good_lil_boy.json": "4e661809795b933b812a95c807f1dd57",
+"assets/assets/lyrics/fever_pt_1/thanxx.json": "76cb75a3cd0edf19276e6375e9e3188b",
 "assets/assets/lyrics/treasure_ep_1/my_way.json": "397600cbd4e37d74044484ab1e54dc81",
 "assets/assets/lyrics/treasure_ep_1/pirate_king.json": "a06c2716e8fe742ee8a42b4f8d990407",
 "assets/assets/lyrics/treasure_ep_1/stay.json": "091de9d5cbaca0c422d2c6d1c96664ef",
@@ -107,15 +109,15 @@ const RESOURCES = {
 "assets/assets/lyrics/the_world_ep_paradigm/outro_liberty.json": "c1954c58189f878d9d55a573b212c4bd",
 "assets/assets/lyrics/the_world_ep_paradigm/paradigm.json": "a37bdce47b2d366ef65944ce16d92444",
 "assets/assets/lyrics/fever_epilogue/turbulence.json": "01ee27be5359a20e95ae6eb21ec328e6",
-"assets/assets/lyrics/fever_epilogue/wonderland_symphony_no_9_from_the_wonderland.json": "e2427425265e194346a8ae4ec695daa6",
-"assets/assets/lyrics/fever_epilogue/the_real.json": "4d747bf40a7b4f42af0b5c24ff0b213a",
-"assets/assets/lyrics/fever_epilogue/the_letter.json": "27312aad2bd976c138df1c5a6f071f75",
-"assets/assets/lyrics/fever_epilogue/better_korean_ver.json": "748a167cfd4f9d3f84cfc331318a6018",
+"assets/assets/lyrics/fever_epilogue/wonderland_symphony_no_9_from_the_wonderland.json": "95417241036385fbd7aa9882e83363d1",
+"assets/assets/lyrics/fever_epilogue/the_real.json": "7025846e853f5337bbb747ba5c8a4bd7",
+"assets/assets/lyrics/fever_epilogue/the_letter.json": "a78f00df92d678ea3a2c563b82dfe34e",
+"assets/assets/lyrics/fever_epilogue/better_korean_ver.json": "a7509e3c2b560c7f08bce0a1f5f5baf6",
 "assets/assets/lyrics/fever_epilogue/be_with_you.json": "4d7139e922df07a926a6acb70f5f14ac",
-"assets/assets/lyrics/fever_epilogue/outro_over_the_horizon.json": "3d5ffb67cb2911c353d9efebd260c106",
-"assets/assets/lyrics/fever_epilogue/answer_ode_to_joy_feat_la_poem.json": "f2b29a9349599e2a9452f0240d75fa65",
-"assets/assets/lyrics/fever_epilogue/still_here_korean_ver.json": "8d3fa5d51f1a12113ec95eba2079d715",
-"assets/assets/lyrics/fever_epilogue/wave_overture.json": "70811ce26f4ff34b56eb6d554bd5ae74",
+"assets/assets/lyrics/fever_epilogue/outro_over_the_horizon.json": "96168aa4871ca666504b7df6c50ff9f7",
+"assets/assets/lyrics/fever_epilogue/answer_ode_to_joy_feat_la_poem.json": "0e0ecd0238a5ccf4f16213956f97fbda",
+"assets/assets/lyrics/fever_epilogue/still_here_korean_ver.json": "4b4aac1693fd51a47ff71be0d1ad1973",
+"assets/assets/lyrics/fever_epilogue/wave_overture.json": "ed3f638a78b04a32de962f868d6138ce",
 "assets/assets/lyrics/treasure_epilogue/horizon.json": "8b8ab5d28c5419507d972a6f514137c7",
 "assets/assets/lyrics/treasure_epilogue/long_journey_outro.json": "6aa13ba319e5179a1ffee4d4f4c644cc",
 "assets/assets/lyrics/treasure_epilogue/star_1117.json": "c1ba2d548940f739f342b08fac0b6fac",
@@ -127,13 +129,13 @@ const RESOURCES = {
 "assets/assets/lyrics/treasure_ep_2/promise.json": "c11482e0187d8cd0b65c2847ff70623a",
 "assets/assets/lyrics/treasure_ep_2/say_my_name.json": "9ba76b21bdb988e0aaf03f1f4dc71d2b",
 "assets/assets/lyrics/treasure_ep_2/hala_hala_hearts_awakened_live_alive.json": "e47fe45324eb33be08b8ef673448c18c",
-"assets/assets/lyrics/fever_pt_2/take_me_home_english_ver.json": "bdbf15447e590f799f79496fd7ec8a4f",
-"assets/assets/lyrics/fever_pt_2/time_of_love.json": "98865c2a2171dffbed7f4373eb8d593c",
+"assets/assets/lyrics/fever_pt_2/take_me_home_english_ver.json": "332c64321c66dcc46299fb8fa7ea863d",
+"assets/assets/lyrics/fever_pt_2/time_of_love.json": "d0b011dd5de80c8f2e0c78c3314802c9",
 "assets/assets/lyrics/fever_pt_2/fireworks_im_the_one.json": "d49687562c4526c8021538bec1b5cd9e",
-"assets/assets/lyrics/fever_pt_2/celebrate.json": "afe14e9826554535b46723c096f7066d",
-"assets/assets/lyrics/fever_pt_2/take_me_home.json": "5ce6ddb42585b6d4882f171e63dc9bcd",
-"assets/assets/lyrics/fever_pt_2/im_the_one_heat_topping_ver.json": "b4266d99044679db81ccc34513632a44",
-"assets/assets/lyrics/fever_pt_2/the_leaders.json": "8fc70174082ae86ccf303d02e6f0bb5f",
+"assets/assets/lyrics/fever_pt_2/celebrate.json": "e5a8f31bd7384cefe2b46cc2f8ba0793",
+"assets/assets/lyrics/fever_pt_2/take_me_home.json": "04b8aaab528c2eb2401734e86fe1af36",
+"assets/assets/lyrics/fever_pt_2/im_the_one_heat_topping_ver.json": "2f3d0bca04ed65abf3fda6d3076c2f9a",
+"assets/assets/lyrics/fever_pt_2/the_leaders.json": "34d7adaf40e7e70fcf43d48b72d8e278",
 "assets/assets/lyrics/treasure_ep_3/utopia.json": "ec0259c6c73f5a3f304c7f2fbf195842",
 "assets/assets/lyrics/treasure_ep_3/crescent.json": "34f237da83fed48c4249f53c29898335",
 "assets/assets/lyrics/treasure_ep_3/dancing_like_butterfly_wings.json": "1b686bda8dc7861ebf805e1c22a1e89c",
@@ -181,19 +183,20 @@ const RESOURCES = {
 "assets/assets/fonts/Raleway-Black.ttf": "38b405eba92acbb5aef45d8152f2a736",
 "assets/assets/fonts/Raleway-BlackItalic.ttf": "82163a0f87990e4f9d9ec2b7893e796a",
 "assets/assets/fonts/Raleway-Italic.ttf": "f73026bcd64e5a5265ab616e5083cd48",
-"canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
-"canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
-"canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
-"canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e"
-};
-
+"canvaskit/skwasm.js": "1df4d741f441fa1a4d10530ced463ef8",
+"canvaskit/skwasm.wasm": "6711032e17bf49924b2b001cef0d3ea3",
+"canvaskit/chromium/canvaskit.js": "8c8392ce4a4364cbb240aa09b5652e05",
+"canvaskit/chromium/canvaskit.wasm": "fc18c3010856029414b70cae1afc5cd9",
+"canvaskit/canvaskit.js": "76f7d822f42397160c5dfc69cbc9b2de",
+"canvaskit/canvaskit.wasm": "f48eaf57cada79163ec6dec7929486ea",
+"canvaskit/skwasm.worker.js": "19659053a277272607529ef87acf9d8a"};
 // The application shell files that are downloaded before a service worker can
 // start.
-const CORE = [
-  "main.dart.js",
+const CORE = ["main.dart.js",
 "index.html",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
+
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -204,7 +207,6 @@ self.addEventListener("install", (event) => {
     })
   );
 });
-
 // During activate, the cache is populated with the temp files downloaded in
 // install. If this service worker is upgrading from one with a saved
 // MANIFEST, then use this to retain unchanged resource files.
@@ -226,6 +228,8 @@ self.addEventListener("activate", function(event) {
         await caches.delete(TEMP);
         // Save the manifest to make future upgrades efficient.
         await manifestCache.put('manifest', new Response(JSON.stringify(RESOURCES)));
+        // Claim client to enable caching on first launch
+        self.clients.claim();
         return;
       }
       var oldManifest = await manifest.json();
@@ -251,6 +255,8 @@ self.addEventListener("activate", function(event) {
       await caches.delete(TEMP);
       // Save the manifest to make future upgrades efficient.
       await manifestCache.put('manifest', new Response(JSON.stringify(RESOURCES)));
+      // Claim client to enable caching on first launch
+      self.clients.claim();
       return;
     } catch (err) {
       // On an unhandled exception the state of the cache cannot be guaranteed.
@@ -261,7 +267,6 @@ self.addEventListener("activate", function(event) {
     }
   }());
 });
-
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
@@ -301,7 +306,6 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
-
 self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
@@ -314,7 +318,6 @@ self.addEventListener('message', (event) => {
     return;
   }
 });
-
 // Download offline will check the RESOURCES for all files not in the cache
 // and populate them.
 async function downloadOffline() {
@@ -335,7 +338,6 @@ async function downloadOffline() {
   }
   return contentCache.addAll(resources);
 }
-
 // Attempt to download the resource online before falling back to
 // the offline cache.
 function onlineFirst(event) {
