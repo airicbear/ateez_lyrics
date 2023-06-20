@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
 
 class _HomeAppBar extends StatelessWidget {
   static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
-  static const String ateezGroupPic = 'assets/images/misc/ateez_group_2.jpg';
+  static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
 
   final TextEditingController controller = TextEditingController();
 

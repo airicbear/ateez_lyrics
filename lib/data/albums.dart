@@ -2,6 +2,19 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+      title: 'THE WORLD EP.2 : OUTLAW',
+      releaseDate: DateTime(2023),
+      imagePath: 'assets/images/cover_art/the_world_ep_2_outlaw.jpg',
+      lyricsFolderPath: 'assets/lyrics/the_world_ep_2_outlaw',
+      lyricsPaths: [
+        'this_world.json',
+        'dune.json',
+        'bouncy_k_hot_chilli_peppers.json',
+        'django.json',
+        'wake_up.json',
+        'outlaw.json',
+      ]),
+  Album(
     title: 'Limitless',
     releaseDate: DateTime(2023),
     imagePath: 'assets/images/cover_art/limitless.jpg',
