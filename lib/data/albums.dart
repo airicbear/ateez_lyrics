@@ -54,6 +54,16 @@ final List<Album> albums = [
     ],
   ),
   Album(
+    title: "Let's Get Together",
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/lets_get_together.jpg',
+    lyricsFolderPath: 'assets/lyrics/lets_get_together',
+    lyricsPaths: [
+      'lets_get_together.json',
+      'lets_get_together_inst.json',
+    ],
+  ),
+  Album(
     title: 'THE WORLD EP.1 : MOVEMENT',
     releaseDate: DateTime(2022),
     imagePath: 'assets/images/cover_art/the_world_ep_1_movement.jpg',
