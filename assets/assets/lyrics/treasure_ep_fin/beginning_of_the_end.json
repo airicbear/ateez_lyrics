@@ -1,0 +1,32 @@
+{
+    "title": "Beginning of the End",
+    "lyrics": {
+        "han": [
+            "[Intro]",
+            "Open your eyes",
+            "",
+            "[Outro]",
+            "건배하자 like a thunder",
+            "네 모든 걸 채워",
+            "넘쳐흐를 듯이"
+        ],
+        "rom": [
+            "[Intro]",
+            "Open your eyes",
+            "",
+            "[Outro]",
+            "Geonbaehaja like a thunder",
+            "Ne modeun geol chaewo",
+            "Neomchyeoheureul deusi"
+        ],
+        "eng": [
+            "[Intro]",
+            "Open your eyes",
+            "",
+            "[Outro]",
+            "Let's toast like a thunder",
+            "All these cups",
+            "Fill them up"
+        ]
+    }
+}
