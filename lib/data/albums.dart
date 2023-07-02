@@ -40,13 +40,14 @@ final List<Album> albums = [
     ],
   ),
   Album(
-      title: 'LOOKISM OST',
-      releaseDate: DateTime(2022),
-      imagePath: 'assets/images/cover_art/lookism_ost.jpg',
-      lyricsFolderPath: 'assets/lyrics/lookism_ost',
-      lyricsPaths: [
-        'like_that.json',
-      ]),
+    title: 'LOOKISM OST',
+    releaseDate: DateTime(2022),
+    imagePath: 'assets/images/cover_art/lookism_ost.jpg',
+    lyricsFolderPath: 'assets/lyrics/lookism_ost',
+    lyricsPaths: [
+      'like_that.json',
+    ],
+  ),
   Album(
     title: 'THE WORLD EP.PARADIGM',
     releaseDate: DateTime(2022),
