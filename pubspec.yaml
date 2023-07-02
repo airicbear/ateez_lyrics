@@ -3,7 +3,7 @@ description: ATEEZ Lyrics
 
 publish_to: "none"
 
-version: 1.0.0+3
+version: 1.0.0+4
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -30,6 +30,7 @@ flutter:
     - assets/images/cover_art/
     - assets/lyrics/limitless/
     - assets/lyrics/spin_off_from_the_witness/
+    - assets/lyrics/lookism_ost/
     - assets/lyrics/lets_get_together/
     - assets/lyrics/the_world_ep_paradigm/
     - assets/lyrics/the_world_ep_1_movement/
