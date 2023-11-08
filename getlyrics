@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 #
 # Print song lyrics from https://genius.com/
 #
@@ -19,6 +19,6 @@ if __name__ == '__main__':
     r = requests.get(url)
     html = r.text
     soup = BeautifulSoup(html, 'html.parser')
-    lyrics = str(soup.find_all('div', {'class': 'Dzxov'}))
+    lyrics = str(soup.find_all('div', {'class': 'kUgSbL'}))
     for line in lyrics.split('<br/>'):
         print(f'"{line}",')
