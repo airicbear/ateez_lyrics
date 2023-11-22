@@ -23,6 +23,26 @@ class MyApp extends StatelessWidget {
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
         ColorScheme lightColorScheme;
         ColorScheme darkColorScheme;
+        TextStyle textStyle = const TextStyle(
+          fontFamily: 'Raleway',
+        );
+        TextTheme textTheme = TextTheme(
+          displayLarge: textStyle,
+          displayMedium: textStyle,
+          displaySmall: textStyle,
+          headlineLarge: textStyle,
+          headlineMedium: textStyle,
+          headlineSmall: textStyle,
+          titleLarge: textStyle,
+          titleMedium: textStyle,
+          titleSmall: textStyle,
+          bodyLarge: textStyle,
+          bodyMedium: textStyle,
+          bodySmall: textStyle,
+          labelLarge: textStyle,
+          labelMedium: textStyle,
+          labelSmall: textStyle,
+        );
 
         if (lightDynamic != null && darkDynamic != null) {
           lightColorScheme = lightDynamic.harmonized();
@@ -36,9 +56,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           theme: ThemeData(
             colorScheme: lightColorScheme,
+            textTheme: textTheme,
           ),
           darkTheme: ThemeData(
             colorScheme: darkColorScheme,
+            textTheme: textTheme,
           ),
           home: const Home(),
           debugShowCheckedModeBanner: false,

@@ -1,5 +1,4 @@
 import 'package:ateez_lyrics/model/song.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
@@ -86,11 +85,10 @@ class _LyricsPageTabBar extends StatelessWidget {
           text: song.lyrics.keys.toList()[index].toUpperCase(),
         ),
       ),
-      labelStyle: const TextStyle(
-        fontFamily: 'Raleway',
-        fontSize: 24.0,
-        fontWeight: FontWeight.bold,
-      ),
+      labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+            fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }
@@ -106,26 +104,9 @@ class _LyricsPageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-        ),
-        child: Text(
-          song.title,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Theme.of(context).textTheme.displayLarge?.color,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      background: Image.asset(
-        imagePath,
-        fit: BoxFit.cover,
-      ),
-      expandedHeight: 256,
+    return SliverAppBar(
+      title: Text(song.title),
+      pinned: true,
     );
   }
 }
@@ -169,17 +150,10 @@ class _LyricsPageLyricListItem extends StatelessWidget {
           ? HtmlWidget(
               line.substring(1, line.length - 1),
               textStyle: TextStyle(
-                fontFamily: 'Raleway',
-                fontSize: 16.0,
                 color: Theme.of(context).disabledColor,
               ),
             )
-          : HtmlWidget(
-              line,
-              textStyle: const TextStyle(
-                fontFamily: 'Raleway',
-              ),
-            ),
+          : HtmlWidget(line),
     );
   }
 }

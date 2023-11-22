@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
-import 'package:ateez_lyrics/ui/common/page_transition.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {
@@ -49,28 +47,11 @@ class _AlbumPageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            album.title,
-            style: TextStyle(
-              color: Theme.of(context).textTheme.displayLarge?.color,
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              fontSize: 24,
-            ),
-          ),
-        ),
+    return SliverAppBar(
+      title: Text(
+        album.title,
       ),
-      background: Image.asset(
-        album.imagePath,
-        fit: BoxFit.cover,
-      ),
-      expandedHeight: 256,
+      pinned: true,
     );
   }
 }
@@ -144,8 +125,8 @@ class _AlbumPageListItem extends StatelessWidget {
     Song song,
   ) {
     Navigator.of(context).push(
-      PageTransition.to(
-        LyricsPage(
+      MaterialPageRoute(
+        builder: (context) => LyricsPage(
           imagePath: imagePath,
           song: song,
         ),
@@ -166,22 +147,15 @@ class _AlbumPageListItemTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Text(
-        '${index + 1}',
-        style: const TextStyle(
-          fontSize: 16.0,
-        ),
-      ),
+      leading: Text('${index + 1}'),
       title: Text(
         song.title,
-        style: TextStyle(
-          fontFamily: 'Raleway',
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-          color: song.lyrics.isEmpty
-              ? Theme.of(context).disabledColor
-              : Theme.of(context).textTheme.bodyLarge?.color,
-        ),
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: song.lyrics.isEmpty
+                  ? Theme.of(context).disabledColor
+                  : Theme.of(context).textTheme.titleLarge?.color,
+            ),
       ),
     );
   }

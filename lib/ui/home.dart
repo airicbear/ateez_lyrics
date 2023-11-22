@@ -6,8 +6,6 @@ import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/search_query.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/album_page.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
-import 'package:ateez_lyrics/ui/common/page_transition.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +19,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,
         child: CustomScrollView(
           slivers: [
             _HomeAppBar(),
@@ -34,54 +31,17 @@ class Home extends StatelessWidget {
 }
 
 class _HomeAppBar extends StatelessWidget {
-  static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
-  static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
+  // static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
+  // static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
 
   final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Consumer<SearchQuery>(
-        builder: (context, searchQuery, child) => Visibility(
-          visible: !searchQuery.enabled,
-          child: Image.asset(
-            ateezLogo,
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-            width: 156,
-          ),
-        ),
-      ),
-      background: Image.asset(
-        ateezGroupPic,
-        fit: BoxFit.cover,
-      ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(10.0),
-        child: ListTile(
-          title: Consumer<SearchQuery>(
-            builder: (context, searchQuery, child) => Visibility(
-              visible: searchQuery.enabled,
-              child: SizedBox(
-                width: 100,
-                child: TextField(
-                  controller: controller,
-                  onChanged: (value) => searchQuery.setQuery(value),
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0.0,
-                      horizontal: 8.0,
-                    ),
-                    hintText: 'Search for a song',
-                  ),
-                ),
-              ),
-            ),
-          ),
-          trailing: _SearchButton(),
-        ),
-      ),
-      expandedHeight: 256,
+    return SliverAppBar(
+      title: const Text('ATEEZ Lyrics'),
+      actions: [_SearchButton()],
+      pinned: true,
     );
   }
 }
@@ -138,8 +98,8 @@ class _HomeAlbumListItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () => Navigator.of(context).push(
-          PageTransition.to(
-            AlbumPage(
+          MaterialPageRoute(
+            builder: (context) => AlbumPage(
               album: albums[index],
             ),
           ),
@@ -191,12 +151,9 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Text(
           albums[index].title,
-          style: const TextStyle(
-            fontFamily: 'Raleway',
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
-          ),
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
       ),
     );
@@ -215,9 +172,6 @@ class _SearchQueryResultList extends StatelessWidget {
               title: Text(
                 'No results found.',
                 style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
                   color: Theme.of(context).disabledColor,
                 ),
               ),
@@ -278,14 +232,16 @@ class _SearchQueryResultListItem extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           song.title,
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: song.lyrics.isEmpty
-                                ? Theme.of(context).disabledColor
-                                : Theme.of(context).textTheme.bodyLarge?.color,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: song.lyrics.isEmpty
+                                        ? Theme.of(context).disabledColor
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.color,
+                                  ),
                         ),
                       ),
                     ),
@@ -307,8 +263,8 @@ class _SearchQueryResultListItem extends StatelessWidget {
     Song song,
   ) {
     Navigator.of(context).push(
-      PageTransition.to(
-        LyricsPage(
+      MaterialPageRoute(
+        builder: (context) => LyricsPage(
           imagePath: imagePath,
           song: song,
         ),
