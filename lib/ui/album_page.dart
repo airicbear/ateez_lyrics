@@ -10,7 +10,10 @@ import 'package:flutter/material.dart';
 class AlbumPage extends StatelessWidget {
   final Album album;
 
-  const AlbumPage({Key? key, required this.album}) : super(key: key);
+  const AlbumPage({
+    super.key,
+    required this.album,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +44,8 @@ class _AlbumPageAppBar extends StatelessWidget {
   final Album album;
 
   const _AlbumPageAppBar({
-    Key? key,
     required this.album,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +78,8 @@ class _AlbumPageList extends StatelessWidget {
   final Album album;
 
   const _AlbumPageList({
-    Key? key,
     required this.album,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +100,9 @@ class _AlbumPageListItem extends StatelessWidget {
   final int index;
 
   const _AlbumPageListItem({
-    Key? key,
     required this.album,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -158,10 +158,9 @@ class _AlbumPageListItemTitle extends StatelessWidget {
   final int index;
 
   const _AlbumPageListItemTitle({
-    Key? key,
     required this.song,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

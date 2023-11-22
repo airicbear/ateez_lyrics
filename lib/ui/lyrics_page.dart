@@ -8,10 +8,10 @@ class LyricsPage extends StatefulWidget {
   final Song song;
 
   const LyricsPage({
-    Key? key,
+    super.key,
     required this.song,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _LyricsPageState();
@@ -72,10 +72,9 @@ class _LyricsPageTabBar extends StatelessWidget {
   final Song song;
 
   const _LyricsPageTabBar({
-    Key? key,
     required this.tabController,
     required this.song,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +99,10 @@ class _LyricsPageAppBar extends StatelessWidget {
   final Song song;
   final String imagePath;
 
-  const _LyricsPageAppBar(
-      {Key? key, required this.song, required this.imagePath})
-      : super(key: key);
+  const _LyricsPageAppBar({
+    required this.song,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -133,9 +133,8 @@ class _LyricsPageLyricList extends StatelessWidget {
   final List<dynamic> lyrics;
 
   const _LyricsPageLyricList({
-    Key? key,
     required this.lyrics,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -158,9 +157,8 @@ class _LyricsPageLyricListItem extends StatelessWidget {
   final String line;
 
   const _LyricsPageLyricListItem({
-    Key? key,
     required this.line,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

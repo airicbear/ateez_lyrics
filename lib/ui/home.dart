@@ -129,9 +129,8 @@ class _HomeAlbumListItem extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItem({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -164,9 +163,8 @@ class _HomeAlbumListItemImage extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItemImage({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -182,9 +180,8 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItemTitle({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -246,9 +243,8 @@ class _SearchQueryResultListItem extends StatelessWidget {
   final MapEntry<String, Album> entry;
 
   const _SearchQueryResultListItem({
-    Key? key,
     required this.entry,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

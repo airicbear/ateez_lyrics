@@ -8,7 +8,7 @@ class MainAppBar extends StatelessWidget {
   final bool centerTitle;
 
   const MainAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.background = const SizedBox.shrink(),
     this.bottom = const PreferredSize(
@@ -17,7 +17,7 @@ class MainAppBar extends StatelessWidget {
     ),
     required this.expandedHeight,
     this.centerTitle = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
