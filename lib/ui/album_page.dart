@@ -65,13 +65,16 @@ class _AlbumPageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => _AlbumPageListItem(
-          album: album,
-          index: index,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => _AlbumPageListItem(
+            album: album,
+            index: index,
+          ),
+          childCount: album.lyricsPaths.length,
         ),
-        childCount: album.lyricsPaths.length,
       ),
     );
   }

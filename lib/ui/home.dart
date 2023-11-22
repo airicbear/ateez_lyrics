@@ -75,12 +75,15 @@ class _HomeList extends StatelessWidget {
 class _HomeAlbumList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => _HomeAlbumListItem(
-          index: index,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => _HomeAlbumListItem(
+            index: index,
+          ),
+          childCount: albums.length,
         ),
-        childCount: albums.length,
       ),
     );
   }
@@ -167,26 +170,32 @@ class _SearchQueryResultList extends StatelessWidget {
     return Consumer<SearchQuery>(builder: (context, searchQuery, child) {
       Map<String, Album> songs = filteredSongs(searchQuery.query);
       if (songs.isEmpty) {
-        return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => ListTile(
-              title: Text(
-                'No results found.',
-                style: TextStyle(
-                  color: Theme.of(context).disabledColor,
+        return SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => ListTile(
+                title: Text(
+                  'No results found.',
+                  style: TextStyle(
+                    color: Theme.of(context).disabledColor,
+                  ),
                 ),
               ),
+              childCount: 1,
             ),
-            childCount: 1,
           ),
         );
       } else {
-        return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => _SearchQueryResultListItem(
-              entry: songs.entries.elementAt(index),
+        return SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => _SearchQueryResultListItem(
+                entry: songs.entries.elementAt(index),
+              ),
+              childCount: songs.length,
             ),
-            childCount: songs.length,
           ),
         );
       }
