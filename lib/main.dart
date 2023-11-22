@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
         cardTheme: const CardTheme(
           elevation: 5,
           shadowColor: Colors.transparent,
-          clipBehavior: Clip.hardEdge,
         ),
       ),
       darkTheme: ThemeData.dark(),

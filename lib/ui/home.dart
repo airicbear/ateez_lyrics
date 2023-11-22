@@ -136,6 +136,7 @@ class _HomeAlbumListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () => Navigator.of(context).push(
           PageTransition.to(
