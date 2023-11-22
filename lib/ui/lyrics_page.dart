@@ -42,21 +42,26 @@ class _LyricsPageState extends State<LyricsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: widget.song.lyrics.length > 1
-          ? _LyricsPageTabBar(
-              tabController: tabController,
-              song: widget.song,
+          ? SafeArea(
+              child: _LyricsPageTabBar(
+                tabController: tabController,
+                song: widget.song,
+              ),
             )
           : const SizedBox.shrink(),
-      body: CustomScrollView(
-        slivers: [
-          _LyricsPageAppBar(
-            imagePath: widget.imagePath,
-            song: widget.song,
-          ),
-          _LyricsPageLyricList(
-            lyrics: lyrics,
-          ),
-        ],
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: [
+            _LyricsPageAppBar(
+              imagePath: widget.imagePath,
+              song: widget.song,
+            ),
+            _LyricsPageLyricList(
+              lyrics: lyrics,
+            ),
+          ],
+        ),
       ),
     );
   }

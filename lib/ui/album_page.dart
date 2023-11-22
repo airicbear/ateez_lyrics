@@ -15,20 +15,23 @@ class AlbumPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _AlbumPageAppBar(
-            album: album,
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(2.0),
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: [
+            _AlbumPageAppBar(
+              album: album,
             ),
-          ),
-          _AlbumPageList(
-            album: album,
-          ),
-        ],
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.all(2.0),
+              ),
+            ),
+            _AlbumPageList(
+              album: album,
+            ),
+          ],
+        ),
       ),
     );
   }
