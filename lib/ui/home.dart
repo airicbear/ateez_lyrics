@@ -39,24 +39,19 @@ class _HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      title: const Text('ATEEZ Lyrics'),
-      actions: [_SearchButton()],
-      pinned: true,
-    );
-  }
-}
-
-class _SearchButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) => IconButton(
-        onPressed: () => searchQuery.setEnabled(!searchQuery.enabled),
-        icon: const Icon(
-          Icons.search,
-          size: 32,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      sliver: SliverAppBar(
+        title: SearchAnchor.bar(
+          barHintText: 'Search for lyrics',
+          suggestionsBuilder: (
+            BuildContext context,
+            SearchController controller,
+          ) {
+            return getSuggestions(controller);
+          },
         ),
+        floating: true,
       ),
     );
   }
@@ -162,6 +157,16 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
       ),
     );
   }
+}
+
+Iterable<Widget> getSuggestions(SearchController controller) {
+  final String input = controller.value.text;
+  Map<String, Album> songs = filteredSongs(input);
+  return songs.keys.map(
+    (song) => _SearchQueryResultListItem(
+      entry: songs.entries.firstWhere((element) => element.key == song),
+    ),
+  );
 }
 
 class _SearchQueryResultList extends StatelessWidget {

@@ -13,7 +13,13 @@ Map<String, Album> songs() {
 
 Map<String, Album> filteredSongs(String query) {
   final Map<String, Album> allSongs = songs();
+  if (query.isEmpty) return allSongs;
+
   final Map<String, Album> results = {};
+  final Map<String, Album> results1 = {};
+  final Map<String, Album> results2 = {};
+  final Map<String, Album> results3 = {};
+  final Map<String, Album> results4 = {};
 
   query = query
       .trim()
@@ -21,39 +27,46 @@ Map<String, Album> filteredSongs(String query) {
       .replaceAll(RegExp(r'\s\s+'), ' ') // Make multiple spaces into one
       .toLowerCase();
 
-  // Any words in song title start with query
   allSongs.forEach((key, value) {
-    if (key
+    // Any words in song title start with query
+    var b1 = key
         .toLowerCase()
         .split('_')
-        .any((element) => element.startsWith(query))) {
-      results.putIfAbsent(key, () => value);
-    }
-  });
+        .any((element) => element.startsWith(query));
 
-  // Song title contains query
-  allSongs.forEach((key, value) {
-    if (key.replaceAll('_', ' ').toLowerCase().contains(query)) {
-      results.putIfAbsent(key, () => value);
-    }
-  });
+    // Song title contains query
+    var b2 = key.replaceAll('_', ' ').toLowerCase().contains(query);
 
-  // Any words in album title start with query
-  allSongs.forEach((key, value) {
-    if (value.title
+    // Any words in album title start with query
+    var b3 = value.title
         .toLowerCase()
         .split(' ')
-        .any((element) => element.startsWith(query))) {
-      results.putIfAbsent(key, () => value);
+        .any((element) => element.startsWith(query));
+
+    // Album title contains query
+    var b4 = value.title.toLowerCase().contains(query);
+
+    if (b1) {
+      results1.putIfAbsent(key, () => value);
+    }
+
+    if (b2) {
+      results2.putIfAbsent(key, () => value);
+    }
+
+    if (b3) {
+      results3.putIfAbsent(key, () => value);
+    }
+
+    if (b4) {
+      results4.putIfAbsent(key, () => value);
     }
   });
 
-  // Album title contains query
-  allSongs.forEach((key, value) {
-    if (value.title.toLowerCase().contains(query)) {
-      results.putIfAbsent(key, () => value);
-    }
-  });
+  results.addAll(results1);
+  results.addAll(results2);
+  results.addAll(results3);
+  results.addAll(results4);
 
   return results;
 }
