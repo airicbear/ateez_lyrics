@@ -22,7 +22,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ATEEZ Lyrics',
-      theme: ThemeData(),
+      theme: ThemeData(
+        cardTheme: const CardTheme(
+          elevation: 5,
+          shadowColor: Colors.transparent,
+          clipBehavior: Clip.hardEdge,
+        ),
+      ),
       darkTheme: ThemeData.dark(),
       home: const Home(),
       debugShowCheckedModeBanner: false,
