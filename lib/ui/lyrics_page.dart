@@ -114,7 +114,8 @@ class _LyricsPageAppBar extends StatelessWidget {
         child: Text(
           song.title,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
+          style: TextStyle(
+            color: Theme.of(context).textTheme.displayLarge?.color,
             fontFamily: 'Raleway',
             fontWeight: FontWeight.bold,
           ),

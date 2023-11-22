@@ -56,7 +56,8 @@ class _AlbumPageAppBar extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             album.title,
-            style: const TextStyle(
+            style: TextStyle(
+              color: Theme.of(context).textTheme.displayLarge?.color,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic,

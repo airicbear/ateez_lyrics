@@ -1,12 +1,11 @@
 import 'package:ateez_lyrics/ui/home.dart';
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'model/search_query.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   runApp(
     ChangeNotifierProvider(
       create: (context) => SearchQuery(),
@@ -20,17 +19,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ATEEZ Lyrics',
-      theme: ThemeData(
-        cardTheme: const CardTheme(
-          elevation: 5,
-          shadowColor: Colors.transparent,
-        ),
-      ),
-      darkTheme: ThemeData.dark(),
-      home: const Home(),
-      debugShowCheckedModeBanner: false,
+    return DynamicColorBuilder(
+      builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+        ColorScheme lightColorScheme;
+        ColorScheme darkColorScheme;
+
+        if (lightDynamic != null && darkDynamic != null) {
+          lightColorScheme = lightDynamic.harmonized();
+          lightColorScheme = lightColorScheme.copyWith();
+          darkColorScheme = darkDynamic.harmonized();
+        } else {
+          lightColorScheme = const ColorScheme.light();
+          darkColorScheme = const ColorScheme.dark();
+        }
+
+        return MaterialApp(
+          theme: ThemeData(
+            colorScheme: lightColorScheme,
+          ),
+          darkTheme: ThemeData(
+            colorScheme: darkColorScheme,
+          ),
+          home: const Home(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
