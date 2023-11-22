@@ -52,6 +52,13 @@ class MyApp extends StatelessWidget {
           darkColorScheme = const ColorScheme.dark();
         }
 
+        lightColorScheme = lightColorScheme.copyWith(
+          shadow: Colors.transparent,
+        );
+        darkColorScheme = darkColorScheme.copyWith(
+          shadow: Colors.transparent,
+        );
+
         return MaterialApp(
           theme: ThemeData(
             colorScheme: lightColorScheme,
