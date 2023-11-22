@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
 
         if (lightDynamic != null && darkDynamic != null) {
           lightColorScheme = lightDynamic.harmonized();
-          lightColorScheme = lightColorScheme.copyWith();
           darkColorScheme = darkDynamic.harmonized();
         } else {
           lightColorScheme = const ColorScheme.light();
