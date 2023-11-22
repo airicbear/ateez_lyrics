@@ -26,6 +26,7 @@ class MainAppBar extends StatelessWidget {
       expandedHeight: expandedHeight,
       bottom: bottom,
       flexibleSpace: FlexibleSpaceBar(
+        titlePadding: const EdgeInsets.symmetric(vertical: 16.0),
         centerTitle: true,
         title: title,
         background: _BackgroundImage(
