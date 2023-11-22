@@ -22,12 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ATEEZ Lyrics',
-      theme: ThemeData(
-        cardColor: Colors.black,
-        splashColor: Colors.white,
-        scaffoldBackgroundColor: Colors.black,
-        brightness: Brightness.dark,
-      ),
+      theme: ThemeData(),
+      darkTheme: ThemeData.dark(),
       home: const Home(),
       debugShowCheckedModeBanner: false,
     );

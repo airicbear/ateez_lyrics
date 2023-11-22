@@ -47,7 +47,7 @@ class _HomeAppBar extends StatelessWidget {
           visible: !searchQuery.enabled,
           child: Image.asset(
             ateezLogo,
-            color: Colors.white,
+            color: Theme.of(context).textTheme.bodyLarge?.color,
             width: 156,
           ),
         ),
@@ -57,7 +57,7 @@ class _HomeAppBar extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(0.0),
+        preferredSize: const Size.fromHeight(10.0),
         child: ListTile(
           title: Consumer<SearchQuery>(
             builder: (context, searchQuery, child) => Visibility(
@@ -67,11 +67,10 @@ class _HomeAppBar extends StatelessWidget {
                 child: TextField(
                   controller: controller,
                   onChanged: (value) => searchQuery.setQuery(value),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 0.0, horizontal: 8.0),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0.0,
+                      horizontal: 8.0,
                     ),
                     hintText: 'Search for a song',
                   ),
@@ -137,17 +136,6 @@ class _HomeAlbumListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 16.0,
-        vertical: 4.0,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
-        side: const BorderSide(
-          color: Colors.white38,
-          width: 1,
-        ),
-      ),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () => Navigator.of(context).push(
@@ -230,10 +218,11 @@ class _SearchQueryResultList extends StatelessWidget {
               title: Text(
                 'No results found.',
                 style: TextStyle(
-                    fontFamily: 'Raleway',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).disabledColor),
+                  fontFamily: 'Raleway',
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).disabledColor,
+                ),
               ),
             ),
             childCount: 1,
@@ -273,14 +262,6 @@ class _SearchQueryResultListItem extends StatelessWidget {
                 Song.fromJson(jsonDecode(snapshot.data.toString()));
 
             return Card(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 4.0,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                side: const BorderSide(color: Colors.white38, width: 1),
-              ),
               clipBehavior: Clip.hardEdge,
               child: InkWell(
                 onTap: () {
