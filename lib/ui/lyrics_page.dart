@@ -113,6 +113,7 @@ class _LyricsPageAppBar extends StatelessWidget {
         ),
         child: Text(
           song.title,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontFamily: 'Raleway',
             fontWeight: FontWeight.bold,
@@ -164,6 +165,7 @@ class _LyricsPageLyricListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      minVerticalPadding: 0,
       title: line.startsWith('[')
           ? HtmlWidget(
               line.substring(1, line.length - 1),

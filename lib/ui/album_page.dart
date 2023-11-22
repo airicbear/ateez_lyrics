@@ -113,14 +113,6 @@ class _AlbumPageListItem extends StatelessWidget {
           final Song song = Song.fromJson(jsonDecode(snapshot.data.toString()));
 
           return Card(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 4.0,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              side: const BorderSide(color: Colors.white38, width: 1),
-            ),
             clipBehavior: Clip.hardEdge,
             child: InkWell(
               onTap: () {
@@ -174,7 +166,12 @@ class _AlbumPageListItemTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Text('${index + 1}'),
+      leading: Text(
+        '${index + 1}',
+        style: const TextStyle(
+          fontSize: 16.0,
+        ),
+      ),
       title: Text(
         song.title,
         style: TextStyle(
