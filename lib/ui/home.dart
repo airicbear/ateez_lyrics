@@ -42,6 +42,7 @@ class _HomeAppBar extends StatelessWidget {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       sliver: SliverAppBar(
+        collapsedHeight: 64,
         title: SearchAnchor.bar(
           barHintText: 'Search for lyrics',
           suggestionsBuilder: (
