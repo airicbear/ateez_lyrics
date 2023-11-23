@@ -153,11 +153,11 @@ class _AlbumPageListItemTitle extends StatelessWidget {
       leading: Text('${index + 1}'),
       title: Text(
         song.title,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
               color: song.lyrics.isEmpty
                   ? Theme.of(context).disabledColor
-                  : Theme.of(context).textTheme.titleLarge?.color,
+                  : Theme.of(context).textTheme.titleMedium?.color,
             ),
       ),
     );

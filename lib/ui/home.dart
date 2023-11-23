@@ -150,7 +150,7 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Text(
           albums[index].title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
         ),
@@ -248,13 +248,13 @@ class _SearchQueryResultListItem extends StatelessWidget {
                         child: Text(
                           song.title,
                           style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: song.lyrics.isEmpty
                                         ? Theme.of(context).disabledColor
                                         : Theme.of(context)
                                             .textTheme
-                                            .titleLarge
+                                            .titleMedium
                                             ?.color,
                                   ),
                         ),
