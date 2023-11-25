@@ -7,7 +7,6 @@ import 'package:ateez_lyrics/model/search_query.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/album_page.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
