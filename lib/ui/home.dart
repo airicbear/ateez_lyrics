@@ -136,8 +136,14 @@ class _HomeAlbumListItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Image.asset(
-        albums[index].imagePath,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Image.asset(
+            albums[index].imagePath,
+          ),
+        ),
       ),
     );
   }
