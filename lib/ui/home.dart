@@ -162,10 +162,13 @@ class _HomeAlbumListItemImage extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Image.asset(
-            albums[index].imagePath,
+        child: Hero(
+          tag: albums[index].imagePath,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(
+              albums[index].imagePath,
+            ),
           ),
         ),
       ),

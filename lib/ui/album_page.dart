@@ -60,13 +60,16 @@ class _AlbumPageAppBar extends StatelessWidget {
         collapseMode: CollapseMode.pin,
         background: Padding(
           padding: const EdgeInsets.all(64.0),
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                album.imagePath,
-                fit: BoxFit.cover,
+          child: Hero(
+            tag: album.imagePath,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  album.imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
