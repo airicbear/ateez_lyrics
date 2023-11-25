@@ -19,7 +19,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,
         child: CustomScrollView(
           slivers: [
             _HomeAppBar(),
@@ -42,15 +41,23 @@ class _HomeAppBar extends StatelessWidget {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       sliver: SliverAppBar(
-        collapsedHeight: 64,
-        title: SearchAnchor.bar(
-          barHintText: 'Search for lyrics',
-          suggestionsBuilder: (
-            BuildContext context,
-            SearchController controller,
-          ) {
-            return getSuggestions(controller);
-          },
+        collapsedHeight: 72,
+        surfaceTintColor: Theme.of(context).colorScheme.surface,
+        flexibleSpace: FlexibleSpaceBar(
+          titlePadding: const EdgeInsets.symmetric(
+            vertical: 8.0,
+            horizontal: 16.0,
+          ),
+          title: SearchAnchor.bar(
+            barHintText: 'Search for lyrics',
+            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+            suggestionsBuilder: (
+              BuildContext context,
+              SearchController controller,
+            ) {
+              return getSuggestions(controller);
+            },
+          ),
         ),
         floating: true,
       ),

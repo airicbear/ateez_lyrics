@@ -17,7 +17,6 @@ class AlbumPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,
         child: CustomScrollView(
           slivers: [
             _AlbumPageAppBar(
@@ -48,6 +47,7 @@ class _AlbumPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      surfaceTintColor: Theme.of(context).colorScheme.surface,
       title: Text(
         album.title,
       ),
