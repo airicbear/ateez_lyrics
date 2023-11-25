@@ -251,8 +251,14 @@ class _SearchQueryResultListItem extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Image.asset(
-                        entry.value.imagePath,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            entry.value.imagePath,
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
