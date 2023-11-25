@@ -48,8 +48,38 @@ class _AlbumPageAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       surfaceTintColor: Theme.of(context).colorScheme.surface,
-      title: Text(
-        album.title,
+      expandedHeight: MediaQuery.of(context).size.height * 0.45,
+      flexibleSpace: FlexibleSpaceBar(
+        titlePadding: const EdgeInsets.only(
+          left: 16.0,
+          right: 16.0,
+          bottom: 8.0,
+        ),
+        centerTitle: true,
+        expandedTitleScale: 1.0,
+        collapseMode: CollapseMode.pin,
+        background: Padding(
+          padding: const EdgeInsets.all(64.0),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                album.imagePath,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            album.title,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
       ),
       pinned: true,
     );
