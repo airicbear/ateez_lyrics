@@ -69,7 +69,7 @@ class _HomeAppBarState extends State<_HomeAppBar> {
           ),
         ],
         flexibleSpace: FlexibleSpaceBar(
-          expandedTitleScale: 1.33,
+          expandedTitleScale: 2.0,
           collapseMode: CollapseMode.pin,
           titlePadding: const EdgeInsets.only(
             left: 16.0,
@@ -78,7 +78,7 @@ class _HomeAppBarState extends State<_HomeAppBar> {
           ),
           title: Text(
             'ATEEZ Lyrics',
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
           ),
