@@ -7,6 +7,7 @@ import 'package:ateez_lyrics/model/search_query.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/album_page.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,9 +20,10 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        top: false,
         child: CustomScrollView(
           slivers: [
-            _HomeAppBar(),
+            const _HomeAppBar(),
             _HomeList(),
           ],
         ),
@@ -30,36 +32,58 @@ class Home extends StatelessWidget {
   }
 }
 
-class _HomeAppBar extends StatelessWidget {
+class _HomeAppBar extends StatefulWidget {
+  const _HomeAppBar();
+
+  @override
+  State<StatefulWidget> createState() => _HomeAppBarState();
+}
+
+class _HomeAppBarState extends State<_HomeAppBar> {
   // static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
   // static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
 
-  final TextEditingController controller = TextEditingController();
+  final SearchController controller = SearchController();
 
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       sliver: SliverAppBar(
-        collapsedHeight: 72,
+        expandedHeight: MediaQuery.of(context).size.height * 0.25,
         surfaceTintColor: Theme.of(context).colorScheme.surface,
-        flexibleSpace: FlexibleSpaceBar(
-          titlePadding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: 16.0,
+        actions: [
+          SearchAnchor(
+            searchController: controller,
+            builder: (context, controller) => IconButton(
+              icon: const Icon(
+                Icons.search,
+                size: 32.0,
+              ),
+              onPressed: () {
+                controller.openView();
+              },
+            ),
+            suggestionsBuilder: (context, controller) =>
+                getSuggestions(controller),
           ),
-          title: SearchAnchor.bar(
-            barHintText: 'Search for lyrics',
-            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-            suggestionsBuilder: (
-              BuildContext context,
-              SearchController controller,
-            ) {
-              return getSuggestions(controller);
-            },
+        ],
+        flexibleSpace: FlexibleSpaceBar(
+          expandedTitleScale: 1.33,
+          collapseMode: CollapseMode.pin,
+          titlePadding: const EdgeInsets.only(
+            left: 16.0,
+            top: 8.0,
+            bottom: 8.0,
+          ),
+          title: Text(
+            'ATEEZ Lyrics',
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ),
-        floating: true,
+        pinned: true,
       ),
     );
   }
