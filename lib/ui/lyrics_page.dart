@@ -105,7 +105,12 @@ class _LyricsPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text(song.title),
+      title: Text(
+        song.title,
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+      ),
       pinned: true,
     );
   }
