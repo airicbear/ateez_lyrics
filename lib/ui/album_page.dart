@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
+import 'package:ateez_lyrics/util/song_manager.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {
@@ -124,30 +123,26 @@ class _AlbumPageListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString(_songPath(index)),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final Song song = Song.fromJson(jsonDecode(snapshot.data.toString()));
+    Map<String, Song> allSongs = SongManager().songs;
+    String path = _songPath(index);
 
-          return Card(
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-              onTap: () {
-                if (song.lyrics.isNotEmpty) {
-                  _goToLyricsPage(context, album.imagePath, song);
-                }
-              },
-              child: _AlbumPageListItemTitle(
-                index: index,
-                song: song,
-              ),
-            ),
-          );
-        } else {
-          return _AlbumPageListItemError();
-        }
-      },
+    if (!allSongs.containsKey(path)) return _AlbumPageListItemError();
+
+    Song song = allSongs[path]!;
+
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: () {
+          if (song.lyrics.isNotEmpty) {
+            _goToLyricsPage(context, album.imagePath, song);
+          }
+        },
+        child: _AlbumPageListItemTitle(
+          index: index,
+          song: song,
+        ),
+      ),
     );
   }
 

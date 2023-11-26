@@ -23,6 +23,7 @@ class SongManager {
         .toList();
 
     for (String fullPath in jsonFilePaths) {
+      if (songs.containsKey(fullPath)) continue;
       String jsonString = await rootBundle.loadString(fullPath);
       Map<String, dynamic> jsonObject = json.decode(jsonString);
       songs.putIfAbsent(fullPath, () => Song.fromJson(jsonObject));
