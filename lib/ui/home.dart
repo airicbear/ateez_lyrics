@@ -1,18 +1,13 @@
-import 'dart:convert';
-
 import 'package:ateez_lyrics/data/albums.dart';
 import 'package:ateez_lyrics/data/songs.dart';
 import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/search_query.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/album_page.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
-import 'package:ateez_lyrics/ui/common/page_transition.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
+import 'package:ateez_lyrics/util/song_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'common/keep_alive_future_builder.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -24,7 +19,7 @@ class Home extends StatelessWidget {
         top: false,
         child: CustomScrollView(
           slivers: [
-            _HomeAppBar(),
+            const _HomeAppBar(),
             _HomeList(),
           ],
         ),
@@ -33,69 +28,58 @@ class Home extends StatelessWidget {
   }
 }
 
-class _HomeAppBar extends StatelessWidget {
-  static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
-  static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
-
-  final TextEditingController controller = TextEditingController();
+class _HomeAppBar extends StatefulWidget {
+  const _HomeAppBar();
 
   @override
-  Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Consumer<SearchQuery>(
-        builder: (context, searchQuery, child) => Visibility(
-          visible: !searchQuery.enabled,
-          child: Image.asset(
-            ateezLogo,
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-            width: 156,
-          ),
-        ),
-      ),
-      background: Image.asset(
-        ateezGroupPic,
-        fit: BoxFit.cover,
-      ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(10.0),
-        child: ListTile(
-          title: Consumer<SearchQuery>(
-            builder: (context, searchQuery, child) => Visibility(
-              visible: searchQuery.enabled,
-              child: SizedBox(
-                width: 100,
-                child: TextField(
-                  controller: controller,
-                  onChanged: (value) => searchQuery.setQuery(value),
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0.0,
-                      horizontal: 8.0,
-                    ),
-                    hintText: 'Search for a song',
-                  ),
-                ),
-              ),
-            ),
-          ),
-          trailing: _SearchButton(),
-        ),
-      ),
-      expandedHeight: 256,
-    );
-  }
+  State<StatefulWidget> createState() => _HomeAppBarState();
 }
 
-class _SearchButton extends StatelessWidget {
+class _HomeAppBarState extends State<_HomeAppBar> {
+  // static const String ateezLogo = 'assets/images/misc/ateez_logo.png';
+  // static const String ateezGroupPic = 'assets/images/misc/ateez_group_3.jpg';
+
+  final SearchController controller = SearchController();
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) => IconButton(
-        onPressed: () => searchQuery.setEnabled(!searchQuery.enabled),
-        icon: const Icon(
-          Icons.search,
-          size: 32,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      sliver: SliverAppBar(
+        expandedHeight: MediaQuery.of(context).size.height * 0.25,
+        surfaceTintColor: Theme.of(context).colorScheme.surface,
+        actions: [
+          SearchAnchor(
+            searchController: controller,
+            builder: (context, controller) => IconButton(
+              icon: const Icon(
+                Icons.search,
+                size: 32.0,
+              ),
+              onPressed: () {
+                controller.openView();
+              },
+            ),
+            suggestionsBuilder: (context, controller) =>
+                getSuggestions(controller),
+          ),
+        ],
+        flexibleSpace: FlexibleSpaceBar(
+          expandedTitleScale: 2.0,
+          collapseMode: CollapseMode.pin,
+          titlePadding: const EdgeInsets.only(
+            left: 16.0,
+            top: 8.0,
+            bottom: 8.0,
+          ),
+          title: Text(
+            'ATEEZ Lyrics',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
+        pinned: true,
       ),
     );
   }
@@ -105,8 +89,7 @@ class _HomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) =>
-          searchQuery.enabled ? _SearchQueryResultList() : _HomeAlbumList(),
+      builder: (context, searchQuery, child) => _HomeAlbumList(),
     );
   }
 }
@@ -114,12 +97,15 @@ class _HomeList extends StatelessWidget {
 class _HomeAlbumList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => _HomeAlbumListItem(
-          index: index,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => _HomeAlbumListItem(
+            index: index,
+          ),
+          childCount: albums.length,
         ),
-        childCount: albums.length,
       ),
     );
   }
@@ -129,9 +115,8 @@ class _HomeAlbumListItem extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItem({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -139,8 +124,8 @@ class _HomeAlbumListItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () => Navigator.of(context).push(
-          PageTransition.to(
-            AlbumPage(
+          MaterialPageRoute(
+            builder: (context) => AlbumPage(
               album: albums[index],
             ),
           ),
@@ -164,15 +149,23 @@ class _HomeAlbumListItemImage extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItemImage({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Image.asset(
-        albums[index].imagePath,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Hero(
+          tag: albums[index].imagePath,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(
+              albums[index].imagePath,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -182,9 +175,8 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
   final int index;
 
   const _HomeAlbumListItemTitle({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -194,113 +186,84 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Text(
           albums[index].title,
-          style: const TextStyle(
-            fontFamily: 'Raleway',
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
-          ),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
       ),
     );
   }
 }
 
-class _SearchQueryResultList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<SearchQuery>(builder: (context, searchQuery, child) {
-      Map<String, Album> songs = filteredSongs(searchQuery.query);
-      if (songs.isEmpty) {
-        return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => ListTile(
-              title: Text(
-                'No results found.',
-                style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).disabledColor,
-                ),
-              ),
-            ),
-            childCount: 1,
-          ),
-        );
-      } else {
-        return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => _SearchQueryResultListItem(
-              entry: songs.entries.elementAt(index),
-            ),
-            childCount: songs.length,
-          ),
-        );
-      }
-    });
-  }
+Iterable<Widget> getSuggestions(SearchController controller) {
+  final String input = controller.value.text;
+  Map<String, Album> songs = filteredSongs(input)
+      .map((key, value) => MapEntry('${value.lyricsFolderPath}/$key', value));
+  Map<String, Song> allSongs = SongManager().songs;
+  return songs.keys.map((path) {
+    if (songs.containsKey(path) && allSongs.containsKey(path)) {
+      Album album = songs[path]!;
+      Song song = allSongs[path]!;
+      return _SearchQueryResultListItem(
+        album: album,
+        song: song,
+      );
+    }
+    return const ListTile();
+  });
 }
 
 class _SearchQueryResultListItem extends StatelessWidget {
-  final MapEntry<String, Album> entry;
+  final Album album;
+  final Song song;
 
   const _SearchQueryResultListItem({
-    Key? key,
-    required this.entry,
-  }) : super(key: key);
+    required this.album,
+    required this.song,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) => KeepAliveFutureBuilder(
-        future: DefaultAssetBundle.of(context)
-            .loadString('${entry.value.lyricsFolderPath}/${entry.key}'),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final Song song =
-                Song.fromJson(jsonDecode(snapshot.data.toString()));
-
-            return Card(
-              clipBehavior: Clip.hardEdge,
-              child: InkWell(
-                onTap: () {
-                  if (song.lyrics.isNotEmpty) {
-                    _goToLyricsPage(context, entry.value.imagePath, song);
-                  }
-                },
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        entry.value.imagePath,
-                      ),
+      builder: (context, searchQuery, child) => Card(
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () {
+            if (song.lyrics.isNotEmpty) {
+              _goToLyricsPage(context, album.imagePath, song);
+            }
+          },
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      album.imagePath,
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          song.title,
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: song.lyrics.isEmpty
-                                ? Theme.of(context).disabledColor
-                                : Theme.of(context).textTheme.bodyLarge?.color,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            );
-          } else {
-            return const SizedBox.shrink();
-          }
-        },
+              Expanded(
+                flex: 3,
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    song.title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: song.lyrics.isEmpty
+                              ? Theme.of(context).disabledColor
+                              : Theme.of(context).textTheme.titleMedium?.color,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -311,8 +274,8 @@ class _SearchQueryResultListItem extends StatelessWidget {
     Song song,
   ) {
     Navigator.of(context).push(
-      PageTransition.to(
-        LyricsPage(
+      MaterialPageRoute(
+        builder: (context) => LyricsPage(
           imagePath: imagePath,
           song: song,
         ),

@@ -1,5 +1,4 @@
 import 'package:ateez_lyrics/model/song.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
@@ -8,10 +7,10 @@ class LyricsPage extends StatefulWidget {
   final Song song;
 
   const LyricsPage({
-    Key? key,
+    super.key,
     required this.song,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _LyricsPageState();
@@ -72,10 +71,9 @@ class _LyricsPageTabBar extends StatelessWidget {
   final Song song;
 
   const _LyricsPageTabBar({
-    Key? key,
     required this.tabController,
     required this.song,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +85,10 @@ class _LyricsPageTabBar extends StatelessWidget {
           text: song.lyrics.keys.toList()[index].toUpperCase(),
         ),
       ),
-      labelStyle: const TextStyle(
-        fontFamily: 'Raleway',
-        fontSize: 24.0,
-        fontWeight: FontWeight.bold,
-      ),
+      labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+            fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }
@@ -100,31 +97,49 @@ class _LyricsPageAppBar extends StatelessWidget {
   final Song song;
   final String imagePath;
 
-  const _LyricsPageAppBar(
-      {Key? key, required this.song, required this.imagePath})
-      : super(key: key);
+  const _LyricsPageAppBar({
+    required this.song,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-        ),
-        child: Text(
-          song.title,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+    return SliverAppBar(
+      expandedHeight: MediaQuery.of(context).size.height * 0.3,
+      flexibleSpace: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          bool isExpanded = constraints.maxHeight * 0.3 > kToolbarHeight;
+
+          return FlexibleSpaceBar(
+            titlePadding: const EdgeInsetsDirectional.only(
+              start: 72,
+              bottom: 16,
+              end: 16,
+            ),
+            background: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                    BlendMode.dstATop,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            title: Text(
+              song.title,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+              maxLines: isExpanded ? 2 : 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          );
+        },
       ),
-      background: Image.asset(
-        imagePath,
-        fit: BoxFit.cover,
-      ),
-      expandedHeight: 256,
+      pinned: true,
     );
   }
 }
@@ -133,9 +148,8 @@ class _LyricsPageLyricList extends StatelessWidget {
   final List<dynamic> lyrics;
 
   const _LyricsPageLyricList({
-    Key? key,
     required this.lyrics,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -158,9 +172,8 @@ class _LyricsPageLyricListItem extends StatelessWidget {
   final String line;
 
   const _LyricsPageLyricListItem({
-    Key? key,
     required this.line,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -170,17 +183,10 @@ class _LyricsPageLyricListItem extends StatelessWidget {
           ? HtmlWidget(
               line.substring(1, line.length - 1),
               textStyle: TextStyle(
-                fontFamily: 'Raleway',
-                fontSize: 16.0,
                 color: Theme.of(context).disabledColor,
               ),
             )
-          : HtmlWidget(
-              line,
-              textStyle: const TextStyle(
-                fontFamily: 'Raleway',
-              ),
-            ),
+          : HtmlWidget(line),
     );
   }
 }

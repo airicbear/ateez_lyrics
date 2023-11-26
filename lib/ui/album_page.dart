@@ -1,22 +1,21 @@
-import 'dart:convert';
-
 import 'package:ateez_lyrics/model/album.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:ateez_lyrics/ui/common/main_app_bar.dart';
-import 'package:ateez_lyrics/ui/common/page_transition.dart';
+import 'package:ateez_lyrics/util/song_manager.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {
   final Album album;
 
-  const AlbumPage({Key? key, required this.album}) : super(key: key);
+  const AlbumPage({
+    super.key,
+    required this.album,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,
         child: CustomScrollView(
           slivers: [
             _AlbumPageAppBar(
@@ -41,33 +40,50 @@ class _AlbumPageAppBar extends StatelessWidget {
   final Album album;
 
   const _AlbumPageAppBar({
-    Key? key,
     required this.album,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(
-      title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            album.title,
-            style: const TextStyle(
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              fontSize: 24,
+    return SliverAppBar(
+      surfaceTintColor: Theme.of(context).colorScheme.surface,
+      expandedHeight: MediaQuery.of(context).size.height * 0.45,
+      flexibleSpace: FlexibleSpaceBar(
+        titlePadding: const EdgeInsets.only(
+          left: 16.0,
+          right: 16.0,
+          bottom: 8.0,
+        ),
+        centerTitle: true,
+        expandedTitleScale: 1.0,
+        collapseMode: CollapseMode.pin,
+        background: Padding(
+          padding: const EdgeInsets.all(64.0),
+          child: Hero(
+            tag: album.imagePath,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  album.imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         ),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            album.title,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
       ),
-      background: Image.asset(
-        album.imagePath,
-        fit: BoxFit.cover,
-      ),
-      expandedHeight: 256,
+      pinned: true,
     );
   }
 }
@@ -76,19 +92,21 @@ class _AlbumPageList extends StatelessWidget {
   final Album album;
 
   const _AlbumPageList({
-    Key? key,
     required this.album,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => _AlbumPageListItem(
-          album: album,
-          index: index,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => _AlbumPageListItem(
+            album: album,
+            index: index,
+          ),
+          childCount: album.lyricsPaths.length,
         ),
-        childCount: album.lyricsPaths.length,
       ),
     );
   }
@@ -99,37 +117,32 @@ class _AlbumPageListItem extends StatelessWidget {
   final int index;
 
   const _AlbumPageListItem({
-    Key? key,
     required this.album,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString(_songPath(index)),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final Song song = Song.fromJson(jsonDecode(snapshot.data.toString()));
+    Map<String, Song> allSongs = SongManager().songs;
+    String path = _songPath(index);
 
-          return Card(
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-              onTap: () {
-                if (song.lyrics.isNotEmpty) {
-                  _goToLyricsPage(context, album.imagePath, song);
-                }
-              },
-              child: _AlbumPageListItemTitle(
-                index: index,
-                song: song,
-              ),
-            ),
-          );
-        } else {
-          return _AlbumPageListItemError();
-        }
-      },
+    if (!allSongs.containsKey(path)) return _AlbumPageListItemError();
+
+    Song song = allSongs[path]!;
+
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: () {
+          if (song.lyrics.isNotEmpty) {
+            _goToLyricsPage(context, album.imagePath, song);
+          }
+        },
+        child: _AlbumPageListItemTitle(
+          index: index,
+          song: song,
+        ),
+      ),
     );
   }
 
@@ -143,8 +156,8 @@ class _AlbumPageListItem extends StatelessWidget {
     Song song,
   ) {
     Navigator.of(context).push(
-      PageTransition.to(
-        LyricsPage(
+      MaterialPageRoute(
+        builder: (context) => LyricsPage(
           imagePath: imagePath,
           song: song,
         ),
@@ -158,30 +171,22 @@ class _AlbumPageListItemTitle extends StatelessWidget {
   final int index;
 
   const _AlbumPageListItemTitle({
-    Key? key,
     required this.song,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Text(
-        '${index + 1}',
-        style: const TextStyle(
-          fontSize: 16.0,
-        ),
-      ),
+      leading: Text('${index + 1}'),
       title: Text(
         song.title,
-        style: TextStyle(
-          fontFamily: 'Raleway',
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-          color: song.lyrics.isEmpty
-              ? Theme.of(context).disabledColor
-              : Theme.of(context).textTheme.bodyLarge?.color,
-        ),
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: song.lyrics.isEmpty
+                  ? Theme.of(context).disabledColor
+                  : Theme.of(context).textTheme.titleMedium?.color,
+            ),
       ),
     );
   }
