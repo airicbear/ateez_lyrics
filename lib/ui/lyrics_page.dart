@@ -105,11 +105,39 @@ class _LyricsPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text(
-        song.title,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
+      expandedHeight: MediaQuery.of(context).size.height * 0.3,
+      flexibleSpace: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          bool isExpanded = constraints.maxHeight * 0.3 > kToolbarHeight;
+
+          return FlexibleSpaceBar(
+            titlePadding: const EdgeInsetsDirectional.only(
+              start: 72,
+              bottom: 16,
+              end: 16,
             ),
+            background: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                    BlendMode.dstATop,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            title: Text(
+              song.title,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+              maxLines: isExpanded ? 2 : 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          );
+        },
       ),
       pinned: true,
     );
