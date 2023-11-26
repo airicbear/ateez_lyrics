@@ -2,13 +2,13 @@ import 'package:ateez_lyrics/data/albums.dart';
 import 'package:ateez_lyrics/model/album.dart';
 
 Map<String, Album> songPathToAlbum() {
-  Map<String, Album> songs = {};
+  Map<String, Album> map = {};
   for (Album album in albums) {
-    for (String song in album.lyricsPaths) {
-      songs.putIfAbsent(song, () => album);
+    for (String path in album.lyricsPaths) {
+      map.putIfAbsent(path, () => album);
     }
   }
-  return songs;
+  return map;
 }
 
 Map<String, Album> filteredSongs(String query) {

@@ -17,15 +17,15 @@ class SongManager {
   }
 
   Future<void> loadSongs() async {
-    Map<String, String> jsonFilePaths = songPathToAlbum()
-        .map((key, value) => MapEntry(key, '${value.lyricsFolderPath}/$key'));
+    List<String> jsonFilePaths = songPathToAlbum()
+        .entries
+        .map((entry) => '${entry.value.lyricsFolderPath}/${entry.key}')
+        .toList();
 
-    for (var entry in jsonFilePaths.entries) {
-      String filename = entry.key;
-      String fullPath = entry.value;
+    for (String fullPath in jsonFilePaths) {
       String jsonString = await rootBundle.loadString(fullPath);
       Map<String, dynamic> jsonObject = json.decode(jsonString);
-      songs.putIfAbsent(filename, () => Song.fromJson(jsonObject));
+      songs.putIfAbsent(fullPath, () => Song.fromJson(jsonObject));
     }
     ;
   }

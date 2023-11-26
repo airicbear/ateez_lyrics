@@ -197,15 +197,19 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
 
 Iterable<Widget> getSuggestions(SearchController controller) {
   final String input = controller.value.text;
-  Map<String, Album> songs = filteredSongs(input);
+  Map<String, Album> songs = filteredSongs(input)
+      .map((key, value) => MapEntry('${value.lyricsFolderPath}/$key', value));
   Map<String, Song> allSongs = SongManager().songs;
-  return allSongs.keys.map((path) {
-    Album album = songs[path]!;
-    Song song = allSongs[path]!;
-    return _SearchQueryResultListItem(
-      album: album,
-      song: song,
-    );
+  return songs.keys.map((path) {
+    if (songs.containsKey(path) && allSongs.containsKey(path)) {
+      Album album = songs[path]!;
+      Song song = allSongs[path]!;
+      return _SearchQueryResultListItem(
+        album: album,
+        song: song,
+      );
+    }
+    return const ListTile();
   });
 }
 
