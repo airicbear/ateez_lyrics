@@ -1,11 +1,16 @@
 import 'package:ateez_lyrics/ui/home.dart';
+import 'package:ateez_lyrics/util/song_manager.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'model/search_query.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SongManager().loadSongs();
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => SearchQuery(),

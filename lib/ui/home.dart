@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ateez_lyrics/data/albums.dart';
 import 'package:ateez_lyrics/data/songs.dart';
 import 'package:ateez_lyrics/model/album.dart';
@@ -7,10 +5,9 @@ import 'package:ateez_lyrics/model/search_query.dart';
 import 'package:ateez_lyrics/model/song.dart';
 import 'package:ateez_lyrics/ui/album_page.dart';
 import 'package:ateez_lyrics/ui/lyrics_page.dart';
+import 'package:ateez_lyrics/util/song_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'common/keep_alive_future_builder.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -92,8 +89,7 @@ class _HomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) =>
-          searchQuery.enabled ? _SearchQueryResultList() : _HomeAlbumList(),
+      builder: (context, searchQuery, child) => _HomeAlbumList(),
     );
   }
 }
@@ -202,118 +198,68 @@ class _HomeAlbumListItemTitle extends StatelessWidget {
 Iterable<Widget> getSuggestions(SearchController controller) {
   final String input = controller.value.text;
   Map<String, Album> songs = filteredSongs(input);
-  return songs.keys.map(
-    (song) => _SearchQueryResultListItem(
-      entry: songs.entries.firstWhere((element) => element.key == song),
-    ),
-  );
-}
-
-class _SearchQueryResultList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<SearchQuery>(builder: (context, searchQuery, child) {
-      Map<String, Album> songs = filteredSongs(searchQuery.query);
-      if (songs.isEmpty) {
-        return SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => ListTile(
-                title: Text(
-                  'No results found.',
-                  style: TextStyle(
-                    color: Theme.of(context).disabledColor,
-                  ),
-                ),
-              ),
-              childCount: 1,
-            ),
-          ),
-        );
-      } else {
-        return SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => _SearchQueryResultListItem(
-                entry: songs.entries.elementAt(index),
-              ),
-              childCount: songs.length,
-            ),
-          ),
-        );
-      }
-    });
-  }
+  Map<String, Song> allSongs = SongManager().songs;
+  return allSongs.keys.map((path) {
+    Album album = songs[path]!;
+    Song song = allSongs[path]!;
+    return _SearchQueryResultListItem(
+      album: album,
+      song: song,
+    );
+  });
 }
 
 class _SearchQueryResultListItem extends StatelessWidget {
-  final MapEntry<String, Album> entry;
+  final Album album;
+  final Song song;
 
   const _SearchQueryResultListItem({
-    required this.entry,
+    required this.album,
+    required this.song,
   });
 
   @override
   Widget build(BuildContext context) {
     return Consumer<SearchQuery>(
-      builder: (context, searchQuery, child) => KeepAliveFutureBuilder(
-        future: DefaultAssetBundle.of(context)
-            .loadString('${entry.value.lyricsFolderPath}/${entry.key}'),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final Song song =
-                Song.fromJson(jsonDecode(snapshot.data.toString()));
-
-            return Card(
-              clipBehavior: Clip.hardEdge,
-              child: InkWell(
-                onTap: () {
-                  if (song.lyrics.isNotEmpty) {
-                    _goToLyricsPage(context, entry.value.imagePath, song);
-                  }
-                },
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            entry.value.imagePath,
-                          ),
-                        ),
-                      ),
+      builder: (context, searchQuery, child) => Card(
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () {
+            if (song.lyrics.isNotEmpty) {
+              _goToLyricsPage(context, album.imagePath, song);
+            }
+          },
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      album.imagePath,
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          song.title,
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: song.lyrics.isEmpty
-                                        ? Theme.of(context).disabledColor
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                            ?.color,
-                                  ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            );
-          } else {
-            return const SizedBox.shrink();
-          }
-        },
+              Expanded(
+                flex: 3,
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    song.title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: song.lyrics.isEmpty
+                              ? Theme.of(context).disabledColor
+                              : Theme.of(context).textTheme.titleMedium?.color,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
