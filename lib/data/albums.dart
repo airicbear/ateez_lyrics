@@ -103,6 +103,15 @@ final List<Album> albums = [
     ],
   ),
   Album(
+    title: 'Don\'t Stop',
+    releaseDate: DateTime(2022, 1, 31),
+    imagePath: 'assets/images/cover_art/dont_stop.jpg',
+    lyricsFolderPath: 'assets/lyrics/dont_stop',
+    lyricsPaths: [
+      'dont_stop.json',
+    ],
+  ),
+  Album(
     title: 'ZERO : FEVER EPILOGUE',
     releaseDate: DateTime(2021),
     imagePath: 'assets/images/cover_art/fever_epilogue.jpg',
