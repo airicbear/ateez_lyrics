@@ -2,6 +2,26 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'THE WORLD EP.FIN : WILL',
+    releaseDate: DateTime(2023, 12, 1),
+    imagePath: 'assets/images/cover_art/the_world_ep_fin_will.jpg',
+    lyricsFolderPath: 'assets/lyrics/the_world_ep_fin_will',
+    lyricsPaths: [
+      'we_know.json',
+      'emergency.json',
+      'crazy_form.json',
+      'arriba.json',
+      'silver_light.json',
+      'crescent_part_2.json',
+      'dreamy_day.json',
+      'matz_hongjoong_seonghwa.json',
+      'its_you_yeosang_san_wooyoung.json',
+      'youth_yunho_mingi.json',
+      'everything_jongho.json',
+      'fin_will.json',
+    ],
+  ),
+  Album(
       title: 'THE WORLD EP.2 : OUTLAW',
       releaseDate: DateTime(2023),
       imagePath: 'assets/images/cover_art/the_world_ep_2_outlaw.jpg',
