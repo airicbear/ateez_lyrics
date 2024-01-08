@@ -116,6 +116,7 @@ class _LyricsPageAppBar extends StatelessWidget {
               bottom: 16,
               end: 16,
             ),
+            centerTitle: false,
             background: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
