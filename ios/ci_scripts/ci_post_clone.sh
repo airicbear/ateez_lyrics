@@ -23,6 +23,6 @@ brew install cocoapods
 # Install CocoaPods dependencies.
 cd ios && pod install # run `pod install` in the `ios` directory.
 
-sed -i '' 's/source="$(readlink "${source}")"/source="$(readlink -f "${source}")"/' ios/Pods/Target\ Support\ Files/Pods-Runner/Pods-Runner-frameworks.sh
+sed -i '' 's/source="$(readlink "${source}")"/source="$(readlink -f "${source}")"/' Pods/Target\ Support\ Files/Pods-Runner/Pods-Runner-frameworks.sh
 
 exit 0
