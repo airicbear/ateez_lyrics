@@ -28,6 +28,5 @@ class SongManager {
       Map<String, dynamic> jsonObject = json.decode(jsonString);
       songs.putIfAbsent(fullPath, () => Song.fromJson(jsonObject));
     }
-    ;
   }
 }
