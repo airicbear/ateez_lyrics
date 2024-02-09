@@ -20,7 +20,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  flutter_native_splash: ^2.3.6
+  flutter_native_splash: ^2.3.9
   flutter_launcher_icons: ^0.13.1
 
 flutter:
@@ -67,16 +67,16 @@ flutter:
           style: italic
 
 flutter_native_splash:
-  color: "#000000"
-  image: "assets/images/misc/splash.png"
+  color: "#262C36"
+  image: "assets/images/misc/presplash.png"
   web: false
 
   android_12:
-    color: "#000000"
-    icon_background_color: "#000000"
+    color: "#262C36"
+    icon_background_color: "#262C36"
     image: assets/images/misc/presplash.png
 
-flutter_icons:
+flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/icon/icon.png"
