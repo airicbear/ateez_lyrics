@@ -1,0 +1,19 @@
+name: Flutter CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Linting
+        run: flutter analyze
+      - name: Testing
+        run: flutter test
+      - name: Building
+        run: flutter build appbundle
