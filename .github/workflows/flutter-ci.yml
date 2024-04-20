@@ -6,18 +6,17 @@ on:
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  main:
+    runs-on: macos-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Clone repository
+        uses: actions/checkout@v4
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
-      - name: Linting
-        run: flutter analyze
-      - name: Testing
-        run: flutter test
-      - name: Building
-        run: flutter build appbundle
+          channel: stable
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build ios --release --no-codesign
+      - run: flutter build apk
+      - run: flutter build appbundle
