@@ -20,22 +20,32 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+      - name: Decode Keystore
+        env:
+          ENCODED_KEYSTORE: ${{ secrets.UPLOAD_KEYSTORE_BASE64 }}
+          DECODED_KEYSTORE_PATH: ${{ secrets.STORE_FILE }}
+        run: |
+          echo $ENCODED_KEYSTORE > keystore_base64.txt
+          base64 -d keystore_base64.txt > $DECODED_KEYSTORE_PATH
       - name: Set up secrets as environment variables
         run: |
           echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
           echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
           echo "STORE_PASSWORD=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_ENV
           echo "STORE_FILE=${{ secrets.STORE_FILE }}" >> $GITHUB_ENV
-          echo "UPLOAD_KEYSTORE_JKS=${{ secrets.UPLOAD_KEYSTORE_JKS }}" >> $GITHUB_ENV
       - name: Use secrets in Android build
         run: |
           echo "keyAlias=\${KEY_ALIAS}" >> android/key.properties
           echo "keyPassword=\${KEY_PASSWORD}" >> android/key.properties
           echo "storePassword=\${STORE_PASSWORD}" >> android/key.properties
           echo "storeFile=\${STORE_FILE}" >> android/key.properties
-          echo "\${UPLOAD_KEYSTORE_JKS}" >> android/app/${STORE_FILE}
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build ios --release --no-codesign
-      - run: flutter build apk
-      - run: flutter build appbundle
+      - name: Run pub get
+        run: flutter pub get
+      - name: Run flutter test
+        run: flutter test
+      - name: Build iOS
+        run: flutter build ios --release --no-codesign
+      - name: Build APK
+        run: flutter build apk
+      - name: Build App Bundle
+        run: flutter build appbundle
