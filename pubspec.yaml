@@ -11,18 +11,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.5
-  flutter_widget_from_html_core: ^0.14.7
-  provider: ^6.0.5
-  dynamic_color: ^1.6.8
+  cupertino_icons: ^1.0.8
+  flutter_widget_from_html_core: ^0.14.11
+  provider: ^6.1.2
+  dynamic_color: ^1.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
-  flutter_native_splash: ^2.3.9
+  flutter_lints: ^3.0.2
+  flutter_native_splash: ^2.4.0
   flutter_launcher_icons: ^0.13.1
-  test: ^1.24.9
+  test: ^1.25.2
+  dart_pre_commit: ^5.3.0
+  git_hooks: ^1.0.1
+
+dependency_overrides:
+  archive: ^3.4.10
+  args: ^2.5.0
+  cli_util: ^0.4.1
+  js: ^0.7.1
+  petitparser: ^6.0.2
+  pointycastle: ^3.9.0
 
 flutter:
   uses-material-design: true
