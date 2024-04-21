@@ -20,6 +20,20 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+      - name: Set up secrets as environment variables
+        run: |
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+          echo "STORE_PASSWORD=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "STORE_FILE=${{ secrets.STORE_FILE }}" >> $GITHUB_ENV
+          echo "UPLOAD_KEYSTORE_JKS=${{ secrets.UPLOAD_KEYSTORE_JKS }}" >> $GITHUB_ENV
+      - name: Use secrets in Android build
+        run: |
+          echo "keyAlias=\${KEY_ALIAS}" >> android/key.properties
+          echo "keyPassword=\${KEY_PASSWORD}" >> android/key.properties
+          echo "storePassword=\${STORE_PASSWORD}" >> android/key.properties
+          echo "storeFile=\${STORE_FILE}" >> android/key.properties
+          echo "\${UPLOAD_KEYSTORE_JKS}" >> android/app/${STORE_FILE}
       - run: flutter pub get
       - run: flutter test
       - run: flutter build ios --release --no-codesign
