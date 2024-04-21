@@ -28,11 +28,16 @@ jobs:
           echo $ENCODED_KEYSTORE > keystore_base64.txt
           base64 -d keystore_base64.txt > $DECODED_KEYSTORE_PATH
       - name: Populate android/key.properties
+        env:
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          STORE_FILE: ${{ secrets.STORE_FILE }}
         run: |
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
-          echo "storeFile=${{ secrets.STORE_FILE }}" >> android/key.properties
+          echo "keyAlias=$KEY_ALIAS" >> android/key.properties
+          echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
+          echo "storePassword=$STORE_PASSWORD" >> android/key.properties
+          echo "storeFile=$STORE_FILE" >> android/key.properties
       - name: Run flutter doctor
         run: flutter doctor
       - name: Run pub get
