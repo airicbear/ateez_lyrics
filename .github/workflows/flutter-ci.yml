@@ -67,14 +67,14 @@ jobs:
         run: flutter pub get
       - name: Run flutter test
         run: flutter test
-      # - name: Build APK
-      #   id: build-apk
-      #   run: flutter build apk --split-per-abi
-      # - name: Archive APK
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: release-apk
-      #     path: build/app/outputs/flutter-apk/
+      - name: Build APK
+        id: build-apk
+        run: flutter build apk --split-per-abi
+      - name: Archive APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/
       - name: Build App Bundle
         id: build-app-bundle
         run: flutter build appbundle
