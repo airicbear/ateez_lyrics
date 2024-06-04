@@ -2,6 +2,20 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'GOLDEN HOUR : Part.1',
+    releaseDate: DateTime(2024, 05, 31),
+    imagePath: 'assets/images/cover_art/golden_hour_part_1.jpg',
+    lyricsFolderPath: 'assets/lyrics/golden_hour_part_1',
+    lyricsPaths: [
+      'golden_hour.json',
+      'blind.json',
+      'work.json',
+      'empty_box.json',
+      'shaboom.json',
+      'siren.json',
+    ],
+  ),
+  Album(
     title: 'THE WORLD EP.FIN : WILL',
     releaseDate: DateTime(2023, 12, 1),
     imagePath: 'assets/images/cover_art/the_world_ep_fin_will.jpg',
