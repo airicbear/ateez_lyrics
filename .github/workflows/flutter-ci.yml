@@ -43,6 +43,24 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches/
+            ~/.gradle/wrapper/
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle/libs.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Cache Android SDK
+        uses: actions/cache@v4
+        env:
+          ANDROID_SDK_ROOT: ~/Library/Android/sdk
+        with:
+          path: ${{ env.ANDROID_SDK_ROOT }}
+          key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle/libs.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-android-sdk-
       - name: Decode Keystore
         env:
           ENCODED_KEYSTORE: ${{ secrets.UPLOAD_KEYSTORE_BASE64 }}
