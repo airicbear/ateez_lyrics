@@ -7,6 +7,13 @@ Read ATEEZ lyrics in Hangul, Romanized, or English.
 [<img src="./assets/images/screenshots/home.jpg" alt="Home page screenshot" width="200" >](./assets/images/screenshots/home.jpg)
 [<img src="./assets/images/screenshots/lyrics.jpg" alt="Lyrics page screenshot" width="200" >](./assets/images/screenshots/lyrics.jpg)
 
+### Run get lyrics script
+
+```
+dart pub global activate --source path .
+getlyrics
+```
+
 ### Development Environment
 
 - Flutter 3.7.12
