@@ -29,7 +29,8 @@ if (flutterVersionName == null) {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
