@@ -74,13 +74,13 @@ flutter:
           style: italic
 
 flutter_native_splash:
-  color: "#262C36"
+  color: "#000000"
   image: "assets/images/misc/presplash.png"
   web: false
 
   android_12:
-    color: "#262C36"
-    icon_background_color: "#262C36"
+    color: "#000000"
+    icon_background_color: "#000000"
     image: assets/images/misc/presplash.png
 
 flutter_launcher_icons:
