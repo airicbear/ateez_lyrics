@@ -38,6 +38,7 @@ flutter:
     - assets/lyrics/spin_off_from_the_witness/
     - assets/lyrics/lookism_ost/
     - assets/lyrics/lets_get_together/
+    - assets/lyrics/birthday/
     - assets/lyrics/golden_hour_part_1/
     - assets/lyrics/the_world_ep_fin_will/
     - assets/lyrics/the_world_ep_paradigm/
@@ -88,4 +89,4 @@ flutter_launcher_icons:
   image_path: "assets/images/icon/icon.png"
 
 executables:
-  getlyrics:
+  get_lyrics:

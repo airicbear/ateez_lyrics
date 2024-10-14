@@ -9,6 +9,8 @@ void main(List<String> arguments) async {
 
   if (arguments.isEmpty) {
     stderr.writeln('error: require at least one argument');
+    await stderr.flush();
+    await stderr.close();
     exitCode = 2;
     return;
   }
