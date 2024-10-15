@@ -24,7 +24,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.1
   flutter_launcher_icons: ^0.14.1
-  test:
+  test: any
   dart_pre_commit: ^5.4.0
   git_hooks: ^1.0.1
 
@@ -74,13 +74,13 @@ flutter:
           style: italic
 
 flutter_native_splash:
-  color: "#262C36"
+  color: "#000000"
   image: "assets/images/misc/presplash.png"
   web: false
 
   android_12:
-    color: "#262C36"
-    icon_background_color: "#262C36"
+    color: "#000000"
+    icon_background_color: "#000000"
     image: assets/images/misc/presplash.png
 
 flutter_launcher_icons:
