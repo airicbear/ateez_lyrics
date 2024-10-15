@@ -24,7 +24,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.1
   flutter_launcher_icons: ^0.14.1
-  test:
+  test: any
   dart_pre_commit: ^5.4.0
   git_hooks: ^1.0.1
 
