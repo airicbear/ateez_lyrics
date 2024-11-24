@@ -2,6 +2,20 @@ import 'package:ateez_lyrics/model/album.dart';
 
 final List<Album> albums = [
   Album(
+    title: 'GOLDEN HOUR : Part.2',
+    releaseDate: DateTime(2024, 11, 15),
+    imagePath: 'assets/images/cover_art/golden_hour_part_2.jpg',
+    lyricsFolderPath: 'assets/lyrics/golden_hour_part_2',
+    lyricsPaths: [
+      'deep_dive.json',
+      'scene_1_value.json',
+      'ice_on_my_teeth.json',
+      'man_on_fire.json',
+      'selfish_waltz.json',
+      'enough.json',
+    ],
+  ),
+  Album(
       title: 'Birthday',
       releaseDate: DateTime(2024, 10, 02),
       imagePath: 'assets/images/cover_art/birthday.jpg',

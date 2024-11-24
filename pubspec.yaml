@@ -16,13 +16,13 @@ dependencies:
   provider: ^6.1.2
   dynamic_color: ^1.7.0
   http: ^1.2.2
-  html: ^0.15.4
+  html: ^0.15.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  flutter_native_splash: ^2.4.2
+  flutter_native_splash: ^2.4.3
   flutter_launcher_icons: ^0.14.1
   test: any
   dart_pre_commit: ^5.4.0
@@ -40,6 +40,7 @@ flutter:
     - assets/lyrics/lets_get_together/
     - assets/lyrics/birthday/
     - assets/lyrics/golden_hour_part_1/
+    - assets/lyrics/golden_hour_part_2/
     - assets/lyrics/the_world_ep_fin_will/
     - assets/lyrics/the_world_ep_paradigm/
     - assets/lyrics/the_world_ep_1_movement/
