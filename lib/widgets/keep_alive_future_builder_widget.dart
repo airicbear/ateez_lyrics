@@ -1,30 +1,17 @@
+import 'package:ateez_lyrics/states/keep_alive_future_builder_widget_state.dart';
 import 'package:flutter/material.dart';
 
-class KeepAliveFutureBuilder extends StatefulWidget {
+class KeepAliveFutureBuilderWidget extends StatefulWidget {
   final Future future;
   final AsyncWidgetBuilder builder;
 
-  const KeepAliveFutureBuilder({
+  const KeepAliveFutureBuilderWidget({
     super.key,
     required this.future,
     required this.builder,
   });
 
   @override
-  State<KeepAliveFutureBuilder> createState() => _KeepAliveFutureBuilderState();
-}
-
-class _KeepAliveFutureBuilderState extends State<KeepAliveFutureBuilder>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return FutureBuilder(
-      future: widget.future,
-      builder: widget.builder,
-    );
-  }
-
-  @override
-  bool get wantKeepAlive => true;
+  State<KeepAliveFutureBuilderWidget> createState() =>
+      KeepAliveFutureBuilderWidgetState();
 }
