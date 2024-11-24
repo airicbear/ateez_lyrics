@@ -2,35 +2,36 @@ import 'package:ateez_lyrics/widgets/home_page_widget.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AppWidget extends StatelessWidget {
+  const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle textStyle = const TextStyle(
+      fontFamily: 'Raleway',
+    );
+    final TextTheme textTheme = TextTheme(
+      displayLarge: textStyle,
+      displayMedium: textStyle,
+      displaySmall: textStyle,
+      headlineLarge: textStyle,
+      headlineMedium: textStyle,
+      headlineSmall: textStyle,
+      titleLarge: textStyle,
+      titleMedium: textStyle,
+      titleSmall: textStyle,
+      bodyLarge: textStyle,
+      bodyMedium: textStyle,
+      bodySmall: textStyle,
+      labelLarge: textStyle,
+      labelMedium: textStyle,
+      labelSmall: textStyle,
+    );
+
     return DynamicColorBuilder(
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
         ColorScheme lightColorScheme;
         ColorScheme darkColorScheme;
-        TextStyle textStyle = const TextStyle(
-          fontFamily: 'Raleway',
-        );
-        TextTheme textTheme = TextTheme(
-          displayLarge: textStyle,
-          displayMedium: textStyle,
-          displaySmall: textStyle,
-          headlineLarge: textStyle,
-          headlineMedium: textStyle,
-          headlineSmall: textStyle,
-          titleLarge: textStyle,
-          titleMedium: textStyle,
-          titleSmall: textStyle,
-          bodyLarge: textStyle,
-          bodyMedium: textStyle,
-          bodySmall: textStyle,
-          labelLarge: textStyle,
-          labelMedium: textStyle,
-          labelSmall: textStyle,
-        );
 
         if (lightDynamic != null && darkDynamic != null) {
           lightColorScheme = lightDynamic.harmonized();
@@ -48,15 +49,12 @@ class MyApp extends StatelessWidget {
         );
 
         return MaterialApp(
-          theme: ThemeData(
-            colorScheme: darkColorScheme,
-            textTheme: textTheme,
-          ),
+          theme: ThemeData(colorScheme: darkColorScheme, textTheme: textTheme),
           darkTheme: ThemeData(
             colorScheme: darkColorScheme,
             textTheme: textTheme,
           ),
-          home: const Home(),
+          home: const HomePageWidget(),
           debugShowCheckedModeBanner: false,
         );
       },

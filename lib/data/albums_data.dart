@@ -1,12 +1,12 @@
 import 'package:ateez_lyrics/model/album_model.dart';
 
-final List<Album> albums = [
-  Album(
-    title: 'GOLDEN HOUR : Part.2',
-    releaseDate: DateTime(2024, 11, 15),
-    imagePath: 'assets/images/cover_art/golden_hour_part_2.jpg',
-    lyricsFolderPath: 'assets/lyrics/golden_hour_part_2',
-    lyricsPaths: [
+final List<AlbumModel> albums = [
+  AlbumModel(
+    albumTitle: 'GOLDEN HOUR : Part.2',
+    albumReleaseDate: DateTime(2024, 11, 15),
+    albumImagePath: 'assets/images/cover_art/golden_hour_part_2.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/golden_hour_part_2',
+    albumLyricsPaths: [
       'deep_dive.json',
       'scene_1_value.json',
       'ice_on_my_teeth.json',
@@ -15,12 +15,12 @@ final List<Album> albums = [
       'enough.json',
     ],
   ),
-  Album(
-      title: 'Birthday',
-      releaseDate: DateTime(2024, 10, 02),
-      imagePath: 'assets/images/cover_art/birthday.jpg',
-      lyricsFolderPath: 'assets/lyrics/birthday',
-      lyricsPaths: [
+  AlbumModel(
+      albumTitle: 'Birthday',
+      albumReleaseDate: DateTime(2024, 10, 02),
+      albumImagePath: 'assets/images/cover_art/birthday.jpg',
+      albumLyricsFolderPath: 'assets/lyrics/birthday',
+      albumLyricsPaths: [
         'birthday.json',
         'royal.json',
         'forevermore.json',
@@ -28,12 +28,12 @@ final List<Album> albums = [
         'royal_instrumental.json',
         'forevermore_instrumental.json',
       ]),
-  Album(
-    title: 'GOLDEN HOUR : Part.1',
-    releaseDate: DateTime(2024, 05, 31),
-    imagePath: 'assets/images/cover_art/golden_hour_part_1.jpg',
-    lyricsFolderPath: 'assets/lyrics/golden_hour_part_1',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'GOLDEN HOUR : Part.1',
+    albumReleaseDate: DateTime(2024, 05, 31),
+    albumImagePath: 'assets/images/cover_art/golden_hour_part_1.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/golden_hour_part_1',
+    albumLyricsPaths: [
       'golden_hour.json',
       'blind.json',
       'work.json',
@@ -42,12 +42,12 @@ final List<Album> albums = [
       'siren.json',
     ],
   ),
-  Album(
-    title: 'THE WORLD EP.FIN : WILL',
-    releaseDate: DateTime(2023, 12, 1),
-    imagePath: 'assets/images/cover_art/the_world_ep_fin_will.jpg',
-    lyricsFolderPath: 'assets/lyrics/the_world_ep_fin_will',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'THE WORLD EP.FIN : WILL',
+    albumReleaseDate: DateTime(2023, 12, 1),
+    albumImagePath: 'assets/images/cover_art/the_world_ep_fin_will.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/the_world_ep_fin_will',
+    albumLyricsPaths: [
       'we_know.json',
       'emergency.json',
       'crazy_form.json',
@@ -62,12 +62,12 @@ final List<Album> albums = [
       'fin_will.json',
     ],
   ),
-  Album(
-      title: 'THE WORLD EP.2 : OUTLAW',
-      releaseDate: DateTime(2023),
-      imagePath: 'assets/images/cover_art/the_world_ep_2_outlaw.jpg',
-      lyricsFolderPath: 'assets/lyrics/the_world_ep_2_outlaw',
-      lyricsPaths: [
+  AlbumModel(
+      albumTitle: 'THE WORLD EP.2 : OUTLAW',
+      albumReleaseDate: DateTime(2023),
+      albumImagePath: 'assets/images/cover_art/the_world_ep_2_outlaw.jpg',
+      albumLyricsFolderPath: 'assets/lyrics/the_world_ep_2_outlaw',
+      albumLyricsPaths: [
         'this_world.json',
         'dune.json',
         'bouncy_k_hot_chilli_peppers.json',
@@ -75,24 +75,24 @@ final List<Album> albums = [
         'wake_up.json',
         'outlaw.json',
       ]),
-  Album(
-    title: 'Limitless',
-    releaseDate: DateTime(2023),
-    imagePath: 'assets/images/cover_art/limitless.jpg',
-    lyricsFolderPath: 'assets/lyrics/limitless',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'Limitless',
+    albumReleaseDate: DateTime(2023),
+    albumImagePath: 'assets/images/cover_art/limitless.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/limitless',
+    albumLyricsPaths: [
       'limitless.json',
       'diamond.json',
       'limitless_instrumental.json',
       'diamond_instrumental.json',
     ],
   ),
-  Album(
-    title: 'SPIN OFF : FROM THE WITNESS',
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/spin_off_from_the_witness.jpg',
-    lyricsFolderPath: 'assets/lyrics/spin_off_from_the_witness',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'SPIN OFF : FROM THE WITNESS',
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/spin_off_from_the_witness.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/spin_off_from_the_witness',
+    albumLyricsPaths: [
       'halazia.json',
       'win_june_one_remix.json',
       'im_the_one_edenary_remix.json',
@@ -100,21 +100,21 @@ final List<Album> albums = [
       'outro_blue_bird.json',
     ],
   ),
-  Album(
-    title: 'LOOKISM OST',
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/lookism_ost.jpg',
-    lyricsFolderPath: 'assets/lyrics/lookism_ost',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'LOOKISM OST',
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/lookism_ost.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/lookism_ost',
+    albumLyricsPaths: [
       'like_that.json',
     ],
   ),
-  Album(
-    title: 'THE WORLD EP.PARADIGM',
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/the_world_ep_paradigm.jpg',
-    lyricsFolderPath: 'assets/lyrics/the_world_ep_paradigm',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'THE WORLD EP.PARADIGM',
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/the_world_ep_paradigm.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/the_world_ep_paradigm',
+    albumLyricsPaths: [
       'intro_siren.json',
       'paradigm.json',
       'cyberpunk_japanese_ver.json',
@@ -123,22 +123,22 @@ final List<Album> albums = [
       'outro_liberty.json',
     ],
   ),
-  Album(
-    title: "Let's Get Together",
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/lets_get_together.jpg',
-    lyricsFolderPath: 'assets/lyrics/lets_get_together',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: "Let's Get Together",
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/lets_get_together.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/lets_get_together',
+    albumLyricsPaths: [
       'lets_get_together.json',
       'lets_get_together_inst.json',
     ],
   ),
-  Album(
-    title: 'THE WORLD EP.1 : MOVEMENT',
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/the_world_ep_1_movement.jpg',
-    lyricsFolderPath: 'assets/lyrics/the_world_ep_1_movement',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'THE WORLD EP.1 : MOVEMENT',
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/the_world_ep_1_movement.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/the_world_ep_1_movement',
+    albumLyricsPaths: [
       'propaganda.json',
       'sector_1.json',
       'cyberpunk.json',
@@ -148,12 +148,12 @@ final List<Album> albums = [
       'new_world.json',
     ],
   ),
-  Album(
-    title: 'BEYOND : ZERO',
-    releaseDate: DateTime(2022),
-    imagePath: 'assets/images/cover_art/beyond_zero.jpg',
-    lyricsFolderPath: 'assets/lyrics/beyond_zero',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'BEYOND : ZERO',
+    albumReleaseDate: DateTime(2022),
+    albumImagePath: 'assets/images/cover_art/beyond_zero.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/beyond_zero',
+    albumLyricsPaths: [
       'intro_beyond_zero.json',
       'deja_vu_japanese_ver.json',
       'rocky_boxers_ver.json',
@@ -163,21 +163,21 @@ final List<Album> albums = [
       'fireworks_im_the_one_japanese_ver.json',
     ],
   ),
-  Album(
-    title: 'Don\'t Stop',
-    releaseDate: DateTime(2022, 1, 31),
-    imagePath: 'assets/images/cover_art/dont_stop.jpg',
-    lyricsFolderPath: 'assets/lyrics/dont_stop',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'Don\'t Stop',
+    albumReleaseDate: DateTime(2022, 1, 31),
+    albumImagePath: 'assets/images/cover_art/dont_stop.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/dont_stop',
+    albumLyricsPaths: [
       'dont_stop.json',
     ],
   ),
-  Album(
-    title: 'ZERO : FEVER EPILOGUE',
-    releaseDate: DateTime(2021),
-    imagePath: 'assets/images/cover_art/fever_epilogue.jpg',
-    lyricsFolderPath: 'assets/lyrics/fever_epilogue',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'ZERO : FEVER EPILOGUE',
+    albumReleaseDate: DateTime(2021),
+    albumImagePath: 'assets/images/cover_art/fever_epilogue.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/fever_epilogue',
+    albumLyricsPaths: [
       'turbulence.json',
       'be_with_you.json',
       'the_letter.json',
@@ -190,12 +190,12 @@ final List<Album> albums = [
       'outro_over_the_horizon.json',
     ],
   ),
-  Album(
-    title: 'ZERO : FEVER, Part.3',
-    releaseDate: DateTime(2021),
-    imagePath: 'assets/images/cover_art/fever_pt_3.jpg',
-    lyricsFolderPath: 'assets/lyrics/fever_pt_3',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'ZERO : FEVER, Part.3',
+    albumReleaseDate: DateTime(2021),
+    albumImagePath: 'assets/images/cover_art/fever_pt_3.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/fever_pt_3',
+    albumLyricsPaths: [
       'eternal_sunshine.json',
       'feeling_like_i_do.json',
       'deja_vu.json',
@@ -234,12 +234,12 @@ final List<Album> albums = [
   //     'still_here.json',
   //   ],
   // ),
-  Album(
-    title: 'ZERO : FEVER, Part.2',
-    releaseDate: DateTime(2021),
-    imagePath: 'assets/images/cover_art/fever_pt_2.jpg',
-    lyricsFolderPath: 'assets/lyrics/fever_pt_2',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'ZERO : FEVER, Part.2',
+    albumReleaseDate: DateTime(2021),
+    albumImagePath: 'assets/images/cover_art/fever_pt_2.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/fever_pt_2',
+    albumLyricsPaths: [
       'fireworks_im_the_one.json',
       'the_leaders.json',
       'time_of_love.json',
@@ -249,12 +249,12 @@ final List<Album> albums = [
       'im_the_one_heat_topping_ver.json',
     ],
   ),
-  Album(
-    title: 'ZERO : FEVER, Part.1',
-    releaseDate: DateTime(2020),
-    imagePath: 'assets/images/cover_art/fever_pt_1.jpg',
-    lyricsFolderPath: 'assets/lyrics/fever_pt_1',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'ZERO : FEVER, Part.1',
+    albumReleaseDate: DateTime(2020),
+    albumImagePath: 'assets/images/cover_art/fever_pt_1.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/fever_pt_1',
+    albumLyricsPaths: [
       'dear_diary.json',
       'fever.json',
       'thanxx.json',
@@ -278,12 +278,12 @@ final List<Album> albums = [
   //     'star_1117_buddys_melodic_mix.json',
   //   ],
   // ),
-  Album(
-    title: 'TREASURE EPILOGUE : Action To Answer',
-    releaseDate: DateTime(2020),
-    imagePath: 'assets/images/cover_art/treasure_epilogue.jpg',
-    lyricsFolderPath: 'assets/lyrics/treasure_epilogue',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'TREASURE EPILOGUE : Action To Answer',
+    albumReleaseDate: DateTime(2020),
+    albumImagePath: 'assets/images/cover_art/treasure_epilogue.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/treasure_epilogue',
+    albumLyricsPaths: [
       'answer.json',
       'horizon.json',
       'star_1117.json',
@@ -310,12 +310,12 @@ final List<Album> albums = [
   //     'promise_notation_from_senor_juwon_park.json',
   //   ],
   // ),
-  Album(
-    title: 'TREASURE EP.FIN : All To Action',
-    releaseDate: DateTime(2019),
-    imagePath: 'assets/images/cover_art/treasure_ep_fin.jpg',
-    lyricsFolderPath: 'assets/lyrics/treasure_ep_fin',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'TREASURE EP.FIN : All To Action',
+    albumReleaseDate: DateTime(2019),
+    albumImagePath: 'assets/images/cover_art/treasure_ep_fin.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/treasure_ep_fin',
+    albumLyricsPaths: [
       'end_of_the_beginning.json',
       'wonderland.json',
       'dazzling_light.json',
@@ -329,12 +329,12 @@ final List<Album> albums = [
       'beginning_of_the_end.json',
     ],
   ),
-  Album(
-    title: 'TREASURE EP.3 : One To All',
-    releaseDate: DateTime(2019),
-    imagePath: 'assets/images/cover_art/treasure_ep_3.jpg',
-    lyricsFolderPath: 'assets/lyrics/treasure_ep_3',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'TREASURE EP.3 : One To All',
+    albumReleaseDate: DateTime(2019),
+    albumImagePath: 'assets/images/cover_art/treasure_ep_3.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/treasure_ep_3',
+    albumLyricsPaths: [
       'utopia.json',
       'illusion.json',
       'crescent.json',
@@ -343,12 +343,12 @@ final List<Album> albums = [
       'dancing_like_butterfly_wings.json',
     ],
   ),
-  Album(
-    title: 'TREASURE EP.2 : Zero To One',
-    releaseDate: DateTime(2019),
-    imagePath: 'assets/images/cover_art/treasure_ep_2.jpg',
-    lyricsFolderPath: 'assets/lyrics/treasure_ep_2',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'TREASURE EP.2 : Zero To One',
+    albumReleaseDate: DateTime(2019),
+    albumImagePath: 'assets/images/cover_art/treasure_ep_2.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/treasure_ep_2',
+    albumLyricsPaths: [
       'hala_hala_hearts_awakened_live_alive.json',
       'say_my_name.json',
       'desire.json',
@@ -357,12 +357,12 @@ final List<Album> albums = [
       'from.json',
     ],
   ),
-  Album(
-    title: 'TREASURE EP.1 : All To Zero',
-    releaseDate: DateTime(2018),
-    imagePath: 'assets/images/cover_art/treasure_ep_1.jpg',
-    lyricsFolderPath: 'assets/lyrics/treasure_ep_1',
-    lyricsPaths: [
+  AlbumModel(
+    albumTitle: 'TREASURE EP.1 : All To Zero',
+    albumReleaseDate: DateTime(2018),
+    albumImagePath: 'assets/images/cover_art/treasure_ep_1.jpg',
+    albumLyricsFolderPath: 'assets/lyrics/treasure_ep_1',
+    albumLyricsPaths: [
       'intro_long_journey.json',
       'pirate_king.json',
       'treasure.json',

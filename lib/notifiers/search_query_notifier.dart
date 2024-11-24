@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SearchQuery extends ChangeNotifier {
+class SearchQueryNotifier extends ChangeNotifier {
   String _query = '';
   bool _enabled = false;
 
