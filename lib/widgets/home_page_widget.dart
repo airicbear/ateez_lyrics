@@ -1,11 +1,11 @@
-import 'package:ateez_lyrics/data/albums.dart';
-import 'package:ateez_lyrics/data/songs.dart';
-import 'package:ateez_lyrics/model/album.dart';
-import 'package:ateez_lyrics/model/search_query.dart';
-import 'package:ateez_lyrics/model/song.dart';
-import 'package:ateez_lyrics/ui/album_page.dart';
-import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:ateez_lyrics/util/song_manager.dart';
+import 'package:ateez_lyrics/data/albums_data.dart';
+import 'package:ateez_lyrics/data/songs_data.dart';
+import 'package:ateez_lyrics/model/album_model.dart';
+import 'package:ateez_lyrics/model/search_query_model.dart';
+import 'package:ateez_lyrics/model/song_model.dart';
+import 'package:ateez_lyrics/widgets/album_page_widget.dart';
+import 'package:ateez_lyrics/widgets/lyrics_page_widget.dart';
+import 'package:ateez_lyrics/singletons/song_manager_singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

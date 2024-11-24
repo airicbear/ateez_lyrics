@@ -1,5 +1,5 @@
-import 'package:ateez_lyrics/data/albums.dart';
-import 'package:ateez_lyrics/model/album.dart';
+import 'package:ateez_lyrics/data/albums_data.dart';
+import 'package:ateez_lyrics/model/album_model.dart';
 
 Map<String, Album> songPathToAlbum() {
   Map<String, Album> map = {};

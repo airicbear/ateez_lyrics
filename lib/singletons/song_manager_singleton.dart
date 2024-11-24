@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ateez_lyrics/data/songs.dart';
-import 'package:ateez_lyrics/model/song.dart';
+import 'package:ateez_lyrics/data/songs_data.dart';
+import 'package:ateez_lyrics/model/song_model.dart';
 import 'package:flutter/services.dart';
 
 class SongManager {
