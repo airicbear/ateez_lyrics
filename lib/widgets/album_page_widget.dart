@@ -1,7 +1,7 @@
-import 'package:ateez_lyrics/model/album.dart';
-import 'package:ateez_lyrics/model/song.dart';
-import 'package:ateez_lyrics/ui/lyrics_page.dart';
-import 'package:ateez_lyrics/util/song_manager.dart';
+import 'package:ateez_lyrics/model/album_model.dart';
+import 'package:ateez_lyrics/model/song_model.dart';
+import 'package:ateez_lyrics/widgets/lyrics_page_widget.dart';
+import 'package:ateez_lyrics/singletons/song_manager_singleton.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {

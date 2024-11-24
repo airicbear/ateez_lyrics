@@ -1,4 +1,4 @@
-import 'package:ateez_lyrics/model/album.dart';
+import 'package:ateez_lyrics/model/album_model.dart';
 
 final List<Album> albums = [
   Album(

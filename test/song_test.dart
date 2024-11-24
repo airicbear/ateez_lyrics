@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ateez_lyrics/model/song.dart';
-import 'package:ateez_lyrics/util/utils.dart';
+import 'package:ateez_lyrics/model/song_model.dart';
+import 'package:ateez_lyrics/utils/find_json_files_utils.dart';
 import 'package:test/test.dart';
 
 void main() {
