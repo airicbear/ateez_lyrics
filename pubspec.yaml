@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  clipboard: ^2.0.0
   cupertino_icons: ^1.0.8
   flutter_widget_from_html_core: ^0.15.2
   provider: ^6.1.2
