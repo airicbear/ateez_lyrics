@@ -1,8 +1,8 @@
 {
   "title": "Now this house ain't a home",
-  "lyrics": [
-    "Insert lyric line 1 here",
-    "Insert lyric line 2 here",
-    "..."
-  ]
+  "lyrics": {
+    "eng": [
+      ""
+    ]
+  }
 }
