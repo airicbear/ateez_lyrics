@@ -4,10 +4,13 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - master
 
 jobs:
-  build-ios:
-    runs-on: macos-latest
+  analyze:
+    runs-on: ubuntu-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -15,12 +18,26 @@ jobs:
         uses: subosito/flutter-action@v2.18.0
         with:
           channel: stable
-      - name: Run flutter doctor
-        run: flutter doctor
+          cache: true
       - name: Run pub get
         run: flutter pub get
-      - name: Run flutter test
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+      - name: Test
         run: flutter test
+
+  build-ios:
+    runs-on: macos-latest
+    needs: analyze
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2.18.0
+        with:
+          channel: stable
+      - name: Run pub get
+        run: flutter pub get
       - name: Build iOS
         id: build-ios
         run: flutter build ios --release --no-codesign
@@ -29,8 +46,10 @@ jobs:
         with:
           name: release-ios
           path: build/ios
+
   build-android:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    needs: analyze
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -53,22 +72,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle/libs.versions.toml') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Cache Android SDK
-        uses: actions/cache@v4
-        env:
-          ANDROID_SDK_ROOT: ~/Library/Android/sdk
-        with:
-          path: ${{ env.ANDROID_SDK_ROOT }}
-          key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle/libs.versions.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-android-sdk-
       - name: Decode Keystore
         env:
           ENCODED_KEYSTORE: ${{ secrets.UPLOAD_KEYSTORE_BASE64 }}
           DECODED_KEYSTORE_PATH: "android/app/${{ secrets.STORE_FILE }}"
-        run: |
-          echo $ENCODED_KEYSTORE > keystore_base64.txt
-          base64 -d -i keystore_base64.txt -o $DECODED_KEYSTORE_PATH
+        run: echo "$ENCODED_KEYSTORE" | base64 -d > "$DECODED_KEYSTORE_PATH"
       - name: Populate android/key.properties
         env:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
@@ -80,12 +88,8 @@ jobs:
           echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
           echo "storePassword=$STORE_PASSWORD" >> android/key.properties
           echo "storeFile=$STORE_FILE" >> android/key.properties
-      - name: Run flutter doctor
-        run: flutter doctor
       - name: Run pub get
         run: flutter pub get
-      - name: Run flutter test
-        run: flutter test
       - name: Build APK
         id: build-apk
         run: flutter build apk --split-per-abi

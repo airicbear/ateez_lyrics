@@ -16,7 +16,7 @@ void main(List<String> arguments) async {
   }
 
   final String response = await request(arguments.first);
-  final List<String> lyrics = parseGeniusLyrics(response, 'kUgSbL');
+  final List<String> lyrics = parseGeniusLyrics(response, 'dfzvqs');
   printJsonFormat(lyrics);
 }
 

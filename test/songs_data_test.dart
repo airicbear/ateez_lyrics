@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:ateez_lyrics/model/song_model.dart';
 import 'package:ateez_lyrics/utils/find_json_files_util.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final List<File> jsonFiles = findJsonFiles(Directory('assets/lyrics'));

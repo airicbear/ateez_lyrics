@@ -3,7 +3,7 @@ description: ATEEZ Lyrics
 
 publish_to: "none"
 
-version: 1.2.2+12
+version: 1.2.2+13
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  clipboard: ^2.0.0
   cupertino_icons: ^1.0.8
   flutter_widget_from_html_core: ^0.15.2
   provider: ^6.1.2
@@ -24,9 +25,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.3
   flutter_launcher_icons: ^0.14.1
-  test: any
-  dart_pre_commit: ^5.4.0
-  git_hooks: ^1.0.1
 
 flutter:
   uses-material-design: true
