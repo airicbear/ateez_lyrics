@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class LyricsPageAppBarWidget extends StatelessWidget {
   final String songTitle;
   final String imagePath;
+  final List<Widget>? actions;
 
   const LyricsPageAppBarWidget({
     super.key,
     required this.songTitle,
     required this.imagePath,
+    this.actions,
   });
 
   @override
@@ -39,6 +41,7 @@ class LyricsPageAppBarWidget extends StatelessWidget {
         },
       ),
       pinned: true,
+      actions: actions,
     );
   }
 }

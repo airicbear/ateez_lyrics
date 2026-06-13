@@ -1,3 +1,4 @@
+import 'package:ateez_lyrics/utils/copy_lyrics_to_clipboard_util.dart';
 import 'package:ateez_lyrics/widgets/lyrics_page_app_bar_widget.dart';
 import 'package:ateez_lyrics/widgets/lyrics_page_bottom_navigation_bar_widget.dart';
 import 'package:ateez_lyrics/widgets/lyrics_page_lyrics_list_widget.dart';
@@ -43,6 +44,20 @@ class LyricsPageWidgetState extends State<LyricsPageWidget>
             LyricsPageAppBarWidget(
               imagePath: widget.albumImagePath,
               songTitle: widget.songTitle,
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.copy),
+                  tooltip: 'Copy lyrics',
+                  onPressed: () async {
+                    await copyLyricsToClipboard(lyricsList);
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Lyrics copied')),
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
             LyricsPageLyricsListWidget(lyrics: lyricsList),
           ],
