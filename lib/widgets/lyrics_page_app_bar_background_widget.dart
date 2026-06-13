@@ -8,7 +8,7 @@ class LyricsPageAppBarBackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorFilter = ColorFilter.mode(
-      Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+      Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3),
       BlendMode.dstATop,
     );
 
